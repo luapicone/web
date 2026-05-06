@@ -160,10 +160,10 @@ function App() {
 
         <div className="relative z-10 min-h-screen">
           <header>
-            <div className="liquid-glass flex items-center justify-between rounded-xl px-4 py-2 text-white">
-              <div className="text-2xl font-semibold tracking-tight">HabitatIA</div>
+            <div className="liquid-glass flex items-center justify-between rounded-xl px-5 py-3 text-white md:px-6">
+              <div className="text-3xl font-semibold tracking-tight">HabitatIA</div>
 
-            <nav className="hidden items-center gap-8 text-sm text-white/90 md:flex">
+            <nav className="hidden items-center gap-8 text-base text-white/90 md:flex">
               {navigation.map((item) => (
                 <a key={item.href} className="transition-colors hover:text-gray-300" href={item.href}>
                   {item.label}
@@ -173,7 +173,7 @@ function App() {
 
             <a
               href="#propuesta"
-              className="rounded-lg bg-white px-6 py-2 text-sm font-medium text-black transition-colors hover:bg-gray-100"
+              className="rounded-lg bg-white px-7 py-2.5 text-base font-medium text-black transition-colors hover:bg-gray-100"
             >
               Empezar ahora
             </a>
@@ -187,7 +187,7 @@ function App() {
                 <AnimatedHeading text={'Diseñamos viviendas\nposibles con IA.'} className="hero-heading mb-10 lg:mb-14" />
 
                 <FadeIn delay={800} duration={1000} className="mt-64 max-w-2xl lg:mt-[21rem] xl:mt-[24rem]">
-                  <p className="hero-copy text-base md:text-lg">
+                  <p className="hero-copy text-lg md:text-xl">
                     HabitatIA ayuda a planificar una vivienda simple, funcional y sostenible, priorizando el costo,
                     el aprovechamiento de materiales y la posibilidad de crecer por etapas.
                   </p>
@@ -196,8 +196,8 @@ function App() {
 
               <div className="mt-36 flex items-end justify-start lg:mt-0 lg:justify-end xl:mt-0">
                 <FadeIn delay={1400} duration={1000} className="lg:mt-[21rem] xl:mt-[24rem]">
-                  <div className="hero-chip rounded-xl px-6 py-3">
-                    <p className="text-lg font-light text-white md:text-xl lg:text-2xl">
+                  <div className="hero-chip rounded-xl px-7 py-4 md:px-8">
+                    <p className="text-xl font-light text-white md:text-2xl lg:text-3xl">
                       Vivienda accesible. Modular. Sostenible.
                     </p>
                   </div>
