@@ -146,19 +146,20 @@ function AnimatedHeading({
 
 function App() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-black text-white font-sans">
-      <video
-        className="fixed inset-0 h-full w-full object-cover"
-        src="/habitatia-background.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-      />
+    <main className="min-h-screen bg-black text-white font-sans">
+      <section className="relative min-h-screen overflow-hidden px-6 pt-6 md:px-12 lg:px-16">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src="/habitatia-background.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
 
-      <div className="relative z-10 min-h-screen px-6 pt-6 md:px-12 lg:px-16">
-        <header>
-          <div className="liquid-glass flex items-center justify-between rounded-xl px-4 py-2 text-white">
+        <div className="relative z-10 min-h-screen">
+          <header>
+            <div className="liquid-glass flex items-center justify-between rounded-xl px-4 py-2 text-white">
             <div className="text-2xl font-semibold tracking-tight">HabitatIA</div>
 
             <nav className="hidden items-center gap-8 text-sm text-white/90 md:flex">
@@ -204,7 +205,10 @@ function App() {
             </div>
           </div>
         </section>
+        </div>
+      </section>
 
+      <div className="px-6 py-8 md:px-12 lg:px-16 lg:py-12">
         <section className="pb-8" id="propuesta">
           <FadeIn delay={200} duration={900}>
             <div className="grid gap-4 md:grid-cols-3">
