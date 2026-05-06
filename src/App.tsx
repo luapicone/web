@@ -334,16 +334,6 @@ function App() {
                 </FadeIn>
               </div>
 
-              <div className="mt-8 flex items-start justify-start lg:mt-0 lg:justify-end lg:pt-24 xl:pt-28">
-                <div className="hero-chip rounded-xl px-6 py-3 md:px-7">
-                  <AnimatedText
-                    delay={1400}
-                    charDelay={18}
-                    text={'Vivienda accesible. Modular. Sostenible.'}
-                    className="text-base font-light text-white md:text-[1.18rem] lg:text-[1.45rem]"
-                  />
-                </div>
-              </div>
             </div>
           </div>
         </section>
