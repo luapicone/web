@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Beams from './components/Beams'
 
 type FadeInProps = {
   children: ReactNode
@@ -234,6 +235,26 @@ function SectionHeader({ eyebrow, title, description }: SectionHeaderProps) {
         <h2 className="section-title">{title}</h2>
       </div>
       <p className="section-description">{description}</p>
+    </div>
+  )
+}
+
+type SectionBeamsProps = {
+  className?: string
+  beamWidth?: number
+  beamHeight?: number
+  beamNumber?: number
+  lightColor?: string
+  speed?: number
+  noiseIntensity?: number
+  scale?: number
+  rotation?: number
+}
+
+function SectionBeams({ className = '', ...props }: SectionBeamsProps) {
+  return (
+    <div className={`section-beams ${className}`.trim()} aria-hidden="true">
+      <Beams {...props} />
     </div>
   )
 }
@@ -588,6 +609,19 @@ function App() {
       <div ref={lowerContentRef} className="content-shell px-6 py-10 md:px-12 md:py-14 lg:px-16 lg:py-16">
         <div className="content-container">
           <section className="section" id="propuesta">
+            <SectionBeams
+              className="section-beams-propuesta"
+              beamWidth={1.8}
+              beamHeight={12}
+              beamNumber={9}
+              lightColor="#2274ff"
+              speed={1.4}
+              noiseIntensity={1.2}
+              scale={0.18}
+              rotation={-8}
+            />
+
+            <div className="section-content">
             <FadeIn delay={180} duration={900}>
               <div className="highlights-grid">
                 {stats.map((stat) => (
@@ -628,9 +662,23 @@ function App() {
                 </article>
               </FadeIn>
             </div>
+            </div>
           </section>
 
           <section className="section" id="impacto">
+            <SectionBeams
+              className="section-beams-impacto"
+              beamWidth={1.9}
+              beamHeight={13}
+              beamNumber={10}
+              lightColor="#d4af37"
+              speed={1.6}
+              noiseIntensity={1.35}
+              scale={0.2}
+              rotation={6}
+            />
+
+            <div className="section-content">
             <FadeIn delay={260} duration={900}>
               <SectionHeader
                 eyebrow="Triple impacto"
@@ -649,9 +697,23 @@ function App() {
                 </FadeIn>
               ))}
             </div>
+            </div>
           </section>
 
           <section className="section" id="tecnologia">
+            <SectionBeams
+              className="section-beams-tecnologia"
+              beamWidth={1.7}
+              beamHeight={14}
+              beamNumber={11}
+              lightColor="#7c3aed"
+              speed={1.8}
+              noiseIntensity={1.45}
+              scale={0.16}
+              rotation={-4}
+            />
+
+            <div className="section-content">
             <FadeIn delay={280} duration={900}>
               <SectionHeader
                 eyebrow="Tecnología Base"
@@ -689,9 +751,23 @@ function App() {
                 ))}
               </div>
             </div>
+            </div>
           </section>
 
           <section className="section section-final" id="marketplace">
+            <SectionBeams
+              className="section-beams-marketplace"
+              beamWidth={1.8}
+              beamHeight={12}
+              beamNumber={8}
+              lightColor="#60a5fa"
+              speed={1.35}
+              noiseIntensity={1.1}
+              scale={0.15}
+              rotation={8}
+            />
+
+            <div className="section-content">
             <FadeIn delay={300} duration={900}>
               <SectionHeader
                 eyebrow="Marketplace"
@@ -719,6 +795,7 @@ function App() {
                 </div>
               </article>
             </FadeIn>
+            </div>
           </section>
         </div>
       </div>
