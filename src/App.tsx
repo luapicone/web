@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Beams from './components/Beams'
+import BeforeAfterShowcase from './components/BeforeAfterShowcase'
 
 type FadeInProps = {
   children: ReactNode
@@ -690,6 +691,8 @@ function App() {
             </div>
             </div>
           </section>
+
+          <BeforeAfterShowcase />
 
           <section className="section" id="impacto">
             <SectionBeams
