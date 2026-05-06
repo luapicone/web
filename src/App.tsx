@@ -92,6 +92,14 @@ type AnimatedHeadingProps = {
   className?: string
 }
 
+type AnimatedTextProps = {
+  text: string
+  delay?: number
+  charDelay?: number
+  duration?: number
+  className?: string
+}
+
 function AnimatedHeading({
   text,
   delay = 200,
@@ -144,6 +152,55 @@ function AnimatedHeading({
   )
 }
 
+function AnimatedText({
+  text,
+  delay = 800,
+  charDelay = 12,
+  duration = 450,
+  className = '',
+}: AnimatedTextProps) {
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setVisible(true), delay)
+    return () => window.clearTimeout(timer)
+  }, [delay])
+
+  const lines = text.split('\n')
+
+  return (
+    <div className={className}>
+      {lines.map((line, lineIndex) => {
+        const lineLength = line.length
+        return (
+          <span key={`${line}-${lineIndex}`} className="block">
+            {line.split('').map((char, charIndex) => {
+              const transitionDelay = lineIndex * lineLength * charDelay + charIndex * charDelay
+              return (
+                <span
+                  key={`${char}-${lineIndex}-${charIndex}`}
+                  className="inline-block"
+                  style={{
+                    opacity: visible ? 1 : 0,
+                    transform: visible ? 'translateX(0)' : 'translateX(-16px)',
+                    transitionProperty: 'opacity, transform',
+                    transitionDuration: `${duration}ms`,
+                    transitionDelay: `${transitionDelay}ms`,
+                    transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                    whiteSpace: 'pre',
+                  }}
+                >
+                  {char === ' ' ? '\u00A0' : char}
+                </span>
+              )
+            })}
+          </span>
+        )
+      })}
+    </div>
+  )
+}
+
 function App() {
   return (
     <main className="min-h-screen bg-black text-white font-sans">
@@ -186,22 +243,28 @@ function App() {
               <div className="max-w-4xl">
                 <AnimatedHeading text={'Diseñamos viviendas\nposibles con IA.'} className="hero-heading mb-10 lg:mb-14" />
 
-                <FadeIn delay={800} duration={1000} className="mt-[22rem] max-w-2xl lg:mt-[30rem] xl:mt-[34rem]">
-                  <p className="hero-copy text-base md:text-[1.2rem] lg:text-[1.35rem] xl:text-[1.5rem] leading-tight">
-                    HabitatIA ayuda a planificar una vivienda simple, funcional y sostenible, priorizando el costo,
-                    el aprovechamiento de materiales y la posibilidad de crecer por etapas.
-                  </p>
-                </FadeIn>
+                <div className="mt-[22rem] max-w-2xl lg:mt-[30rem] xl:mt-[34rem]">
+                  <AnimatedText
+                    delay={800}
+                    text={
+                      'HabitatIA ayuda a planificar una vivienda simple, funcional y sostenible, priorizando el costo,\nel aprovechamiento de materiales y la posibilidad de crecer por etapas.'
+                    }
+                    className="hero-copy text-base md:text-[1.2rem] lg:text-[1.35rem] xl:text-[1.5rem] leading-tight"
+                  />
+                </div>
               </div>
 
               <div className="mt-60 flex items-end justify-start lg:mt-0 lg:justify-end xl:mt-0">
-                <FadeIn delay={1400} duration={1000} className="lg:mt-[30rem] xl:mt-[34rem]">
+                <div className="lg:mt-[30rem] xl:mt-[34rem]">
                   <div className="hero-chip rounded-xl px-7 py-4 md:px-8">
-                    <p className="text-xl font-light text-white md:text-2xl lg:text-3xl">
-                      Vivienda accesible. Modular. Sostenible.
-                    </p>
+                    <AnimatedText
+                      delay={1400}
+                      charDelay={18}
+                      text={'Vivienda accesible. Modular. Sostenible.'}
+                      className="text-xl font-light text-white md:text-2xl lg:text-3xl"
+                    />
                   </div>
-                </FadeIn>
+                </div>
               </div>
             </div>
           </div>
