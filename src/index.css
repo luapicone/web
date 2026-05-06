@@ -577,6 +577,35 @@ a {
 
 .before-after-section {
   position: relative;
+  isolation: isolate;
+}
+
+.before-after-section::before,
+.before-after-section::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(80px);
+  opacity: 0.55;
+  animation: beforeAfterFloat 14s ease-in-out infinite;
+}
+
+.before-after-section::before {
+  top: 8%;
+  left: -6%;
+  width: 24rem;
+  height: 24rem;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.2) 0%, rgba(96, 165, 250, 0) 72%);
+}
+
+.before-after-section::after {
+  right: -4%;
+  bottom: 12%;
+  width: 22rem;
+  height: 22rem;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, rgba(212, 175, 55, 0) 72%);
+  animation-delay: -7s;
 }
 
 .before-after-header {
@@ -584,19 +613,66 @@ a {
 }
 
 .before-after-shell {
+  position: relative;
+  z-index: 1;
   max-width: 1080px;
+  isolation: isolate;
+}
+
+.before-after-shell::before {
+  content: '';
+  position: absolute;
+  top: 1.5rem;
+  right: -2rem;
+  left: -2rem;
+  height: 70%;
+  border-radius: 2.5rem;
+  background:
+    linear-gradient(90deg, rgba(96, 165, 250, 0.08) 0%, rgba(96, 165, 250, 0) 32%, rgba(212, 175, 55, 0) 68%, rgba(212, 175, 55, 0.08) 100%),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 70%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .before-after-frame {
   position: relative;
+  z-index: 1;
   overflow: hidden;
   min-height: 560px;
   border-radius: 1.85rem;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(9, 12, 20, 0.92);
+  background:
+    linear-gradient(145deg, rgba(9, 12, 20, 0.94) 0%, rgba(5, 7, 14, 0.98) 100%);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 24px 60px rgba(0, 0, 0, 0.34);
+    0 24px 60px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(96, 165, 250, 0.06);
+}
+
+.before-after-frame::before,
+.before-after-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.before-after-frame::before {
+  background:
+    linear-gradient(120deg, rgba(96, 165, 250, 0.18) 0%, rgba(96, 165, 250, 0) 22%, rgba(212, 175, 55, 0) 78%, rgba(212, 175, 55, 0.16) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 14%, rgba(255, 255, 255, 0) 86%, rgba(255, 255, 255, 0.05) 100%);
+}
+
+.before-after-frame::after {
+  inset: auto -14% -18% auto;
+  width: 42%;
+  height: 48%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0) 72%);
+  filter: blur(28px);
+  opacity: 0.6;
+  animation: beforeAfterPulse 9s ease-in-out infinite;
 }
 
 .before-after-image {
@@ -611,6 +687,15 @@ a {
   inset: 0 auto 0 0;
   overflow: hidden;
   border-right: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: 20px 0 44px rgba(96, 165, 250, 0.16);
+}
+
+.before-after-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(96, 165, 250, 0.12) 0%, rgba(96, 165, 250, 0) 38%);
+  pointer-events: none;
 }
 
 .before-after-overlay .before-after-image {
@@ -623,9 +708,13 @@ a {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78) 0%, rgba(96, 165, 250, 0.92) 52%, rgba(212, 175, 55, 0.92) 100%);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.08),
+    0 0 28px rgba(96, 165, 250, 0.28),
+    0 0 38px rgba(212, 175, 55, 0.18);
   transform: translateX(-50%);
+  z-index: 2;
 }
 
 .before-after-handle {
@@ -638,21 +727,32 @@ a {
   border-radius: 999px;
   display: grid;
   place-items: center;
-  background: rgba(8, 14, 28, 0.96);
+  background: linear-gradient(135deg, rgba(10, 20, 40, 0.98) 0%, rgba(18, 15, 29, 0.98) 100%);
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(96, 165, 250, 0.14),
+    0 0 26px rgba(96, 165, 250, 0.18);
   font-size: 1rem;
   cursor: ew-resize;
   touch-action: none;
   user-select: none;
   padding: 0;
   appearance: none;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
 }
 
 .before-after-handle:hover,
 .before-after-handle:focus-visible {
-  background: rgba(15, 22, 40, 1);
+  background: linear-gradient(135deg, rgba(14, 26, 50, 1) 0%, rgba(30, 22, 42, 1) 100%);
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(96, 165, 250, 0.18),
+    0 0 34px rgba(212, 175, 55, 0.22);
   outline: none;
 }
 
@@ -667,6 +767,7 @@ a {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   backdrop-filter: blur(10px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
 }
 
 .before-label {
@@ -692,6 +793,28 @@ a {
 
 .before-after-caption strong {
   color: #fff;
+}
+
+@keyframes beforeAfterFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0) scale(1.04);
+  }
+}
+
+@keyframes beforeAfterPulse {
+  0%,
+  100% {
+    opacity: 0.42;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.72;
+    transform: scale(1.08);
+  }
 }
 
 @media (max-width: 768px) {
