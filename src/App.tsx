@@ -272,29 +272,29 @@ function App() {
           </div>
         </header>
 
-        <section className="flex h-[calc(100vh-6rem)] flex-1 pb-52 pt-2 lg:pb-56 lg:pt-10">
-          <div className="flex h-full w-full flex-col justify-end">
-            <div className="lg:grid lg:grid-cols-2 lg:items-end">
-              <div className="max-w-2xl">
+        <section className="flex h-[calc(100vh-6rem)] flex-1 pt-6 lg:pt-10">
+          <div className="flex h-full w-full flex-col">
+            <div className="hero-layout lg:grid lg:grid-cols-[minmax(0,1.05fr)_minmax(280px,0.95fr)] lg:items-end">
+              <div className="max-w-[760px]">
                 <FadeIn delay={100} duration={800}>
-                  <div className="hero-eyebrow mb-5 md:mb-6">
+                  <div className="hero-eyebrow mb-4 md:mb-5">
                     Planificación inteligente para vivienda accesible
                   </div>
                 </FadeIn>
 
                 <AnimatedHeading
                   text={'Diseñamos\nviviendas posibles\ncon IA.'}
-                  className="hero-heading mb-7 lg:mb-8"
+                  className="hero-heading mb-5 lg:mb-6"
                 />
 
                 <AnimatedText
                   delay={800}
                   text={'HabitatIA te ayuda a planificar viviendas simples, funcionales y sostenibles, priorizando el costo, el aprovechamiento de materiales y la posibilidad de crecer por etapas.'}
-                  className="hero-copy text-[0.95rem] md:text-[1.05rem] lg:text-[1.15rem] leading-snug mb-9 lg:mb-11"
+                  className="hero-copy max-w-[640px] text-[0.98rem] md:text-[1.08rem] lg:text-[1.16rem] leading-snug mb-7 lg:mb-8"
                 />
 
                 <FadeIn delay={1200} duration={900}>
-                  <div className="flex flex-wrap gap-3 mb-10 lg:mb-14">
+                  <div className="flex flex-wrap gap-3 mb-8 lg:mb-10">
                     <a href="#propuesta" className="hero-btn-primary">Empezar ahora</a>
                     <a href="#propuesta" className="hero-btn-outlined">Ver propuesta</a>
                   </div>
@@ -312,8 +312,8 @@ function App() {
                           </svg>
                         </div>
                         <div>
-                          <div className="hero-stat-value text-[1.7rem] md:text-[2.1rem] lg:text-[2.45rem]">+120</div>
-                          <div className="hero-stat-label text-[0.92rem] md:text-[0.98rem] lg:text-[1.05rem]">viviendas planificadas</div>
+                          <div className="hero-stat-value text-[1.55rem] md:text-[1.9rem] lg:text-[2.15rem]">+120</div>
+                          <div className="hero-stat-label text-[0.88rem] md:text-[0.94rem] lg:text-[1rem]">viviendas planificadas</div>
                         </div>
                       </div>
                       <div className="hero-stat-sep" />
@@ -325,8 +325,8 @@ function App() {
                           </svg>
                         </div>
                         <div>
-                          <div className="hero-stat-value text-[1.7rem] md:text-[2.1rem] lg:text-[2.45rem]">30%</div>
-                          <div className="hero-stat-label text-[0.92rem] md:text-[0.98rem] lg:text-[1.05rem]">menos desperdicio de materiales</div>
+                          <div className="hero-stat-value text-[1.55rem] md:text-[1.9rem] lg:text-[2.15rem]">30%</div>
+                          <div className="hero-stat-label text-[0.88rem] md:text-[0.94rem] lg:text-[1rem]">menos desperdicio de materiales</div>
                         </div>
                       </div>
                     </div>
@@ -334,13 +334,13 @@ function App() {
                 </FadeIn>
               </div>
 
-              <div className="mt-10 flex items-end justify-start lg:mt-0 lg:justify-end">
-                <div className="hero-chip rounded-xl px-7 py-4 md:px-8">
+              <div className="mt-8 flex items-start justify-start lg:mt-0 lg:justify-end lg:pt-24 xl:pt-28">
+                <div className="hero-chip rounded-xl px-6 py-3 md:px-7">
                   <AnimatedText
                     delay={1400}
                     charDelay={18}
                     text={'Vivienda accesible. Modular. Sostenible.'}
-                    className="text-lg font-light text-white md:text-[1.4rem] lg:text-[1.8rem]"
+                    className="text-base font-light text-white md:text-[1.18rem] lg:text-[1.45rem]"
                   />
                 </div>
               </div>
