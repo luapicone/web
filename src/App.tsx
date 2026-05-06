@@ -719,14 +719,6 @@ function App() {
             />
 
             <div className="section-content">
-            <FadeIn delay={260} duration={900}>
-              <SectionHeader
-                eyebrow="Remodelación asistida"
-                title="Sacás una foto de un ambiente y la IA te ayuda a remodelarlo antes de comprar materiales."
-                description="HabitatIA también va a permitir visualizar una remodelación real sobre un espacio existente, recomendando materiales y mostrando en tiempo real cómo cambia el ambiente con cada elección."
-              />
-            </FadeIn>
-
             <div className="split-layout remodel-layout">
               <FadeIn delay={340} duration={900}>
                 <article className="feature-card feature-card-primary remodel-main-card">
