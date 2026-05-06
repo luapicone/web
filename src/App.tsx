@@ -186,7 +186,7 @@ function App() {
               <div className="max-w-4xl">
                 <AnimatedHeading text={'Diseñamos viviendas\nposibles con IA.'} className="hero-heading mb-10 lg:mb-14" />
 
-                <FadeIn delay={800} duration={1000} className="mt-72 max-w-2xl lg:mt-[24rem] xl:mt-[27rem]">
+                <FadeIn delay={800} duration={1000} className="mt-80 max-w-2xl lg:mt-[27rem] xl:mt-[30rem]">
                   <p className="hero-copy text-base md:text-[1.2rem] lg:text-[1.35rem] xl:text-[1.5rem] leading-tight">
                     HabitatIA ayuda a planificar una vivienda simple, funcional y sostenible, priorizando el costo,
                     el aprovechamiento de materiales y la posibilidad de crecer por etapas.
@@ -194,8 +194,8 @@ function App() {
                 </FadeIn>
               </div>
 
-              <div className="mt-44 flex items-end justify-start lg:mt-0 lg:justify-end xl:mt-0">
-                <FadeIn delay={1400} duration={1000} className="lg:mt-[24rem] xl:mt-[27rem]">
+              <div className="mt-52 flex items-end justify-start lg:mt-0 lg:justify-end xl:mt-0">
+                <FadeIn delay={1400} duration={1000} className="lg:mt-[27rem] xl:mt-[30rem]">
                   <div className="hero-chip rounded-xl px-7 py-4 md:px-8">
                     <p className="text-xl font-light text-white md:text-2xl lg:text-3xl">
                       Vivienda accesible. Modular. Sostenible.
