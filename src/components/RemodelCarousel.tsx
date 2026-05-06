@@ -39,12 +39,13 @@ export default function RemodelCarousel() {
   return (
     <div className="remodel-carousel">
       <div className="remodel-carousel-frame">
-        <div
-          className="remodel-carousel-track"
-          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-        >
-          {slides.map((slide) => (
-            <figure key={slide.label} className="remodel-carousel-slide">
+        <div className="remodel-carousel-track">
+          {slides.map((slide, index) => (
+            <figure
+              key={slide.label}
+              className={`remodel-carousel-slide ${index === activeIndex ? 'is-active' : ''}`.trim()}
+              aria-hidden={index !== activeIndex}
+            >
               <img className="remodel-carousel-image" src={slide.image} alt={slide.alt} />
             </figure>
           ))}

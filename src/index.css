@@ -605,18 +605,37 @@ a {
 }
 
 .remodel-carousel-track {
-  display: flex;
-  transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
+  position: relative;
+  min-height: 34rem;
 }
 
 .remodel-carousel-slide {
-  min-width: 100%;
+  position: absolute;
+  inset: 0;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.35rem 0.75rem 0.35rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(0.985);
+  transition:
+    opacity 260ms ease,
+    transform 260ms ease,
+    visibility 0s linear 260ms;
+}
+
+.remodel-carousel-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(1);
+  transition:
+    opacity 260ms ease,
+    transform 260ms ease,
+    visibility 0s linear 0s;
 }
 
 .remodel-carousel-image {
@@ -983,6 +1002,10 @@ a {
   .before-after-handle {
     width: 48px;
     height: 48px;
+  }
+
+  .remodel-carousel-track {
+    min-height: 30rem;
   }
 
   .remodel-carousel-image {
