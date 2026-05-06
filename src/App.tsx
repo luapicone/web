@@ -187,7 +187,7 @@ function App() {
                 <AnimatedHeading text={'Diseñamos viviendas\nposibles con IA.'} className="hero-heading mb-10 lg:mb-14" />
 
                 <FadeIn delay={800} duration={1000} className="mt-64 max-w-2xl lg:mt-[21rem] xl:mt-[24rem]">
-                  <p className="hero-copy text-lg md:text-xl">
+                  <p className="hero-copy text-xl md:text-2xl lg:text-[1.7rem]">
                     HabitatIA ayuda a planificar una vivienda simple, funcional y sostenible, priorizando el costo,
                     el aprovechamiento de materiales y la posibilidad de crecer por etapas.
                   </p>
