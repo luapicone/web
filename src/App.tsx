@@ -364,7 +364,7 @@ function App() {
             <div className="cards-grid cards-grid-3">
               {impacts.map((impact, index) => (
                 <FadeIn key={impact.title} delay={360 + index * 110} duration={900}>
-                  <article className="feature-card feature-card-equal">
+                  <article className={`feature-card feature-card-equal ${index === 0 ? 'impact-social' : index === 1 ? 'impact-environmental' : 'impact-economic'}`}>
                     <h3 className="feature-title">{impact.title}</h3>
                     <p className="feature-description">{impact.description}</p>
                   </article>
@@ -434,9 +434,9 @@ function App() {
                   </div>
 
                   <div className="marketplace-bullets">
-                    <div>• pensar una vivienda posible según el dinero disponible</div>
-                    <div>• construir por etapas y crecer más adelante</div>
-                    <div>• tomar decisiones más claras con menos desperdicio</div>
+                    <div className="marketplace-bullet">pensar una vivienda posible según el dinero disponible</div>
+                    <div className="marketplace-bullet">construir por etapas y crecer más adelante</div>
+                    <div className="marketplace-bullet">tomar decisiones más claras con menos desperdicio</div>
                   </div>
                 </div>
               </article>
