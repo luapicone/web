@@ -178,39 +178,22 @@ function App() {
           </div>
         </header>
 
-        <section className="flex min-h-[calc(100vh-6rem)] flex-1 pb-12 lg:pb-16">
+        <section className="flex min-h-[calc(100vh-6rem)] flex-1 pb-12 pt-20 lg:pb-16 lg:pt-28">
           <div className="flex h-full w-full flex-col justify-end">
             <div className="lg:grid lg:grid-cols-2 lg:items-end">
               <div className="max-w-4xl">
-                <AnimatedHeading text={'Diseñamos viviendas\nposibles con IA.'} className="mb-4" />
+                <AnimatedHeading text={'Diseñamos viviendas\nposibles con IA.'} className="mb-10 lg:mb-14" />
 
-                <FadeIn delay={800} duration={1000} className="mb-5 max-w-2xl">
+                <FadeIn delay={800} duration={1000} className="mt-24 max-w-2xl lg:mt-32">
                   <p className="text-base text-gray-300 md:text-lg">
                     HabitatIA ayuda a planificar una vivienda simple, funcional y sostenible, priorizando el costo,
                     el aprovechamiento de materiales y la posibilidad de crecer por etapas.
                   </p>
                 </FadeIn>
-
-                <FadeIn delay={1200} duration={1000}>
-                  <div className="flex flex-wrap gap-4">
-                    <a
-                      href="#propuesta"
-                      className="rounded-lg bg-white px-8 py-3 font-medium text-black transition-colors hover:bg-gray-100"
-                    >
-                      Iniciar conversación
-                    </a>
-                    <a
-                      href="#marketplace"
-                      className="liquid-glass rounded-lg border border-white/20 px-8 py-3 font-medium text-white transition-colors hover:bg-white hover:text-black"
-                    >
-                      Ver marketplace
-                    </a>
-                  </div>
-                </FadeIn>
               </div>
 
-              <div className="mt-8 flex items-end justify-start lg:mt-0 lg:justify-end">
-                <FadeIn delay={1400} duration={1000}>
+              <div className="mt-16 flex items-end justify-start lg:mt-0 lg:justify-end">
+                <FadeIn delay={1400} duration={1000} className="lg:mt-24">
                   <div className="liquid-glass rounded-xl border border-white/20 px-6 py-3">
                     <p className="text-lg font-light text-white md:text-xl lg:text-2xl">
                       Vivienda accesible. Modular. Sostenible.
