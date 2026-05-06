@@ -275,7 +275,7 @@ function App() {
         <section className="flex h-[calc(100vh-6rem)] flex-1 pt-6 lg:pt-10">
           <div className="flex h-full w-full flex-col">
             <div className="hero-layout lg:grid lg:grid-cols-[minmax(0,1.05fr)_minmax(280px,0.95fr)] lg:items-end">
-              <div className="mt-6 max-w-[760px] lg:mt-10">
+              <div className="mt-12 max-w-[760px] lg:mt-16">
                 <FadeIn delay={100} duration={800}>
                   <div className="hero-eyebrow mb-4 md:mb-5">
                     Planificación inteligente para vivienda accesible
