@@ -179,13 +179,13 @@ function App() {
           </div>
         </header>
 
-        <section className="flex min-h-[calc(100vh-6rem)] flex-1 pb-6 pt-12 lg:pb-8 lg:pt-20">
+        <section className="flex min-h-[calc(100vh-6rem)] flex-1 pb-2 pt-12 lg:pb-3 lg:pt-20">
           <div className="flex h-full w-full flex-col justify-end">
             <div className="lg:grid lg:grid-cols-2 lg:items-end">
               <div className="max-w-4xl">
                 <AnimatedHeading text={'Diseñamos viviendas\nposibles con IA.'} className="mb-10 lg:mb-14" />
 
-                <FadeIn delay={800} duration={1000} className="mt-40 max-w-2xl lg:mt-56">
+                <FadeIn delay={800} duration={1000} className="mt-56 max-w-2xl lg:mt-72">
                   <p className="text-base text-gray-300 md:text-lg">
                     HabitatIA ayuda a planificar una vivienda simple, funcional y sostenible, priorizando el costo,
                     el aprovechamiento de materiales y la posibilidad de crecer por etapas.
@@ -193,8 +193,8 @@ function App() {
                 </FadeIn>
               </div>
 
-              <div className="mt-24 flex items-end justify-start lg:mt-0 lg:justify-end">
-                <FadeIn delay={1400} duration={1000} className="lg:mt-40">
+              <div className="mt-36 flex items-end justify-start lg:mt-0 lg:justify-end">
+                <FadeIn delay={1400} duration={1000} className="lg:mt-56">
                   <div className="liquid-glass rounded-xl border border-white/20 px-6 py-3">
                     <p className="text-lg font-light text-white md:text-xl lg:text-2xl">
                       Vivienda accesible. Modular. Sostenible.
