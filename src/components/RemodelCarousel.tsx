@@ -8,19 +8,16 @@ const slides = [
     image: firstImage,
     alt: 'Primer paso del flujo de remodelación asistida con IA',
     label: 'Paso 1',
-    title: 'Foto inicial del ambiente',
   },
   {
     image: secondImage,
     alt: 'Segundo paso del flujo de remodelación asistida con IA',
     label: 'Paso 2',
-    title: 'Recomendación y selección de materiales',
   },
   {
     image: thirdImage,
     alt: 'Tercer paso del flujo de remodelación asistida con IA',
     label: 'Paso 3',
-    title: 'Visualización final del resultado',
   },
 ]
 
@@ -47,12 +44,8 @@ export default function RemodelCarousel() {
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
           {slides.map((slide) => (
-            <figure key={slide.title} className="remodel-carousel-slide">
+            <figure key={slide.label} className="remodel-carousel-slide">
               <img className="remodel-carousel-image" src={slide.image} alt={slide.alt} />
-              <figcaption className="remodel-carousel-caption">
-                <span className="remodel-carousel-step">{slide.label}</span>
-                <strong>{slide.title}</strong>
-              </figcaption>
             </figure>
           ))}
         </div>
@@ -70,7 +63,7 @@ export default function RemodelCarousel() {
       <div className="remodel-carousel-dots" aria-label="Indicadores del carrusel">
         {slides.map((slide, index) => (
           <button
-            key={slide.title}
+            key={slide.label}
             type="button"
             className={`remodel-carousel-dot ${index === activeIndex ? 'is-active' : ''}`.trim()}
             onClick={() => goTo(index)}
