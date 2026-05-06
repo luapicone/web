@@ -81,3 +81,230 @@ a {
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
 }
+
+.content-shell {
+  background: #05070c;
+}
+
+.content-container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1360px;
+}
+
+.section {
+  position: relative;
+  padding: 2rem 0 3.5rem;
+}
+
+.section + .section {
+  margin-top: 1rem;
+}
+
+.section + .section::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.18) 20%, rgba(255,255,255,0.18) 80%, rgba(255,255,255,0));
+}
+
+.section-header {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.section-heading-block {
+  max-width: 900px;
+}
+
+.section-eyebrow,
+.card-eyebrow {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.56);
+}
+
+.section-title {
+  margin: 0.75rem 0 0;
+  max-width: 12ch;
+  font-size: clamp(2.25rem, 4vw, 4.4rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  color: #fff;
+  text-wrap: balance;
+}
+
+.section-description {
+  margin: 0;
+  max-width: 760px;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.highlights-grid,
+.cards-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.highlights-grid {
+  margin-bottom: 2.25rem;
+}
+
+.highlight-card,
+.feature-card {
+  border-radius: 1.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(10, 13, 20, 0.9);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 14px 40px rgba(0, 0, 0, 0.2);
+}
+
+.highlight-card {
+  padding: 1.4rem 1.4rem 1.25rem;
+}
+
+.highlight-value {
+  font-size: clamp(1.9rem, 2vw, 2.6rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  color: #fff;
+}
+
+.highlight-label {
+  margin-top: 0.55rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.split-layout {
+  display: grid;
+  gap: 1rem;
+}
+
+.feature-card {
+  padding: 1.7rem;
+}
+
+.feature-card-primary {
+  padding: 2rem;
+}
+
+.feature-card-secondary,
+.feature-card-equal {
+  height: 100%;
+}
+
+.feature-title {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.1vw, 2.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  color: #fff;
+}
+
+.feature-description {
+  margin: 1rem 0 0;
+  font-size: 0.98rem;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.4rem;
+}
+
+.tech-pill {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.stacked-cards {
+  display: grid;
+  gap: 1rem;
+}
+
+.marketplace-card {
+  padding: 2rem;
+}
+
+.marketplace-layout {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.marketplace-bullets {
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.2rem 1.25rem;
+  font-size: 0.98rem;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 2.5rem 0 4.5rem;
+  }
+
+  .section-header {
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    align-items: end;
+    gap: 2rem;
+    margin-bottom: 2.4rem;
+  }
+
+  .section-description {
+    justify-self: end;
+  }
+
+  .highlights-grid,
+  .cards-grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .proposal-layout {
+    grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+    align-items: stretch;
+  }
+
+  .tech-layout {
+    grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+    align-items: start;
+  }
+
+  .marketplace-layout {
+    grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+    align-items: start;
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: 3rem 0 5rem;
+  }
+
+  .feature-card,
+  .feature-card-primary,
+  .marketplace-card {
+    padding: 2.2rem;
+  }
+}

@@ -100,6 +100,12 @@ type AnimatedTextProps = {
   className?: string
 }
 
+type SectionHeaderProps = {
+  eyebrow: string
+  title: string
+  description: string
+}
+
 function AnimatedHeading({
   text,
   delay = 200,
@@ -218,6 +224,18 @@ function AnimatedText({
   )
 }
 
+function SectionHeader({ eyebrow, title, description }: SectionHeaderProps) {
+  return (
+    <div className="section-header">
+      <div className="section-heading-block">
+        <div className="section-eyebrow">{eyebrow}</div>
+        <h2 className="section-title">{title}</h2>
+      </div>
+      <p className="section-description">{description}</p>
+    </div>
+  )
+}
+
 function App() {
   return (
     <main className="min-h-screen bg-black text-white font-sans">
@@ -289,133 +307,142 @@ function App() {
         </div>
       </section>
 
-      <div className="px-6 py-8 md:px-12 lg:px-16 lg:py-12">
-        <section className="pb-8" id="propuesta">
-          <FadeIn delay={200} duration={900}>
-            <div className="grid gap-4 md:grid-cols-3">
-              {stats.map((stat) => (
-                <div key={stat.label} className="liquid-glass rounded-2xl border border-white/10 px-5 py-5">
-                  <div className="text-2xl font-medium text-white">{stat.value}</div>
-                  <div className="mt-2 text-sm text-gray-300">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </FadeIn>
-        </section>
-
-        <section className="grid gap-6 pb-8 lg:grid-cols-[1.1fr_0.9fr]" id="story">
-          <FadeIn delay={250} duration={900}>
-            <div className="liquid-glass rounded-3xl border border-white/10 p-6 md:p-8">
-              <div className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-gray-300">Nuestra propuesta</div>
-              <h2 className="max-w-3xl text-3xl font-normal tracking-[-0.04em] text-white md:text-4xl">
-                Una herramienta pensada para viviendas posibles y reales.
-              </h2>
-              <p className="mt-4 max-w-2xl text-sm leading-6 text-gray-300 md:text-base">
-                Combinamos planificación simple, criterios de ahorro y diseño modular para acercar soluciones
-                habitacionales a familias que necesitan construir con recursos limitados.
-              </p>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={350} duration={900}>
-            <div className="liquid-glass rounded-3xl border border-white/10 p-6 md:p-8">
-              <div className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-gray-300">Objetivo del MVP</div>
-              <p className="text-sm leading-6 text-gray-300 md:text-base">
-                Construir una primera versión capaz de orientar a una familia sobre qué vivienda conviene, cuánto
-                podría costar y cómo se podría construir de forma progresiva.
-              </p>
-            </div>
-          </FadeIn>
-        </section>
-
-        <section className="pb-8" id="impacto">
-          <FadeIn delay={300} duration={900}>
-            <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-              <div>
-                <div className="text-xs font-medium uppercase tracking-[0.22em] text-gray-300">Triple impacto</div>
-                <h2 className="mt-2 text-3xl font-normal tracking-[-0.04em] text-white md:text-4xl">
-                  Tecnología aplicada a una vivienda digna, accesible y eficiente.
-                </h2>
-              </div>
-              <p className="max-w-xl text-sm leading-6 text-gray-300 md:text-base">
-                HabitatIA busca que más familias puedan proyectar una casa posible de construir y mejorar con el tiempo.
-              </p>
-            </div>
-          </FadeIn>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            {impacts.map((impact, index) => (
-              <FadeIn key={impact.title} delay={420 + index * 120} duration={900}>
-                <div className="liquid-glass h-full rounded-3xl border border-white/10 p-6">
-                  <h3 className="text-xl font-normal text-white">{impact.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-gray-300 md:text-base">{impact.description}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </section>
-
-        <section className="pb-8" id="tecnologia">
-          <div className="grid gap-4 lg:grid-cols-[1fr_1fr]">
-            <FadeIn delay={320} duration={900}>
-              <div className="liquid-glass rounded-3xl border border-white/10 p-6 md:p-8">
-                <div className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-gray-300">Tecnología base</div>
-                <h2 className="text-3xl font-normal tracking-[-0.04em] text-white md:text-4xl">
-                  Orientación clara para decidir mejor antes de construir.
-                </h2>
-                <p className="mt-4 text-sm leading-6 text-gray-300 md:text-base">
-                  La plataforma fue pensada para dar una primera orientación clara sobre qué vivienda conviene,
-                  cuánto podría costar y cómo se podría construir de forma progresiva.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-3 text-sm text-white">
-                  {['React', 'Bootstrap', 'Node.js', 'API REST', 'Cloud Computing', 'IA Generativa'].map((tech) => (
-                    <span key={tech} className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-gray-200">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+      <div className="content-shell px-6 py-10 md:px-12 md:py-14 lg:px-16 lg:py-16">
+        <div className="content-container">
+          <section className="section" id="propuesta">
+            <FadeIn delay={180} duration={900}>
+              <div className="highlights-grid">
+                {stats.map((stat) => (
+                  <div key={stat.label} className="highlight-card">
+                    <div className="highlight-value">{stat.value}</div>
+                    <div className="highlight-label">{stat.label}</div>
+                  </div>
+                ))}
               </div>
             </FadeIn>
 
-            <div className="grid gap-4">
-              {features.map((feature, index) => (
-                <FadeIn key={feature.title} delay={420 + index * 120} duration={900}>
-                  <div className="liquid-glass rounded-3xl border border-white/10 p-6">
-                    <h3 className="text-xl font-normal text-white">{feature.title}</h3>
-                    <p className="mt-3 text-sm leading-6 text-gray-300 md:text-base">{feature.description}</p>
-                  </div>
+            <FadeIn delay={240} duration={900}>
+              <SectionHeader
+                eyebrow="Propuesta"
+                title="Una plataforma pensada para ordenar decisiones, costos y crecimiento de una vivienda real."
+                description="HabitatIA organiza la información con una estructura más clara para que una familia pueda entender mejor qué construir, cómo priorizar y cómo proyectar una ampliación futura."
+              />
+            </FadeIn>
+
+            <div className="split-layout proposal-layout">
+              <FadeIn delay={320} duration={900}>
+                <article className="feature-card feature-card-primary">
+                  <h3 className="feature-title">Una herramienta pensada para viviendas posibles y reales.</h3>
+                  <p className="feature-description">
+                    Combinamos planificación simple, criterios de ahorro y diseño modular para acercar soluciones
+                    habitacionales a familias que necesitan construir con recursos limitados.
+                  </p>
+                </article>
+              </FadeIn>
+
+              <FadeIn delay={420} duration={900}>
+                <article className="feature-card feature-card-secondary">
+                  <div className="card-eyebrow">Objetivo del MVP</div>
+                  <p className="feature-description">
+                    Construir una primera versión capaz de orientar a una familia sobre qué vivienda conviene, cuánto
+                    podría costar y cómo se podría construir de forma progresiva.
+                  </p>
+                </article>
+              </FadeIn>
+            </div>
+          </section>
+
+          <section className="section" id="impacto">
+            <FadeIn delay={260} duration={900}>
+              <SectionHeader
+                eyebrow="Triple impacto"
+                title="Tecnología aplicada a una vivienda digna, accesible y eficiente."
+                description="HabitatIA busca que más familias puedan proyectar una casa posible de construir hoy y preparada para crecer mejor con el tiempo."
+              />
+            </FadeIn>
+
+            <div className="cards-grid cards-grid-3">
+              {impacts.map((impact, index) => (
+                <FadeIn key={impact.title} delay={360 + index * 110} duration={900}>
+                  <article className="feature-card feature-card-equal">
+                    <h3 className="feature-title">{impact.title}</h3>
+                    <p className="feature-description">{impact.description}</p>
+                  </article>
                 </FadeIn>
               ))}
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="pb-12 lg:pb-16" id="marketplace">
-          <FadeIn delay={360} duration={900}>
-            <div className="liquid-glass rounded-3xl border border-white/10 p-6 md:p-8">
-              <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
-                <div>
-                  <div className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-gray-300">Marketplace</div>
-                  <h2 className="text-3xl font-normal tracking-[-0.04em] text-white md:text-4xl">
-                    Materiales, espacios y decisiones básicas para gastar mejor.
-                  </h2>
-                  <p className="mt-4 max-w-2xl text-sm leading-6 text-gray-300 md:text-base">
-                    La propuesta de HabitatIA también contempla una capa de marketplace para orientar compras,
-                    comparar alternativas y optimizar materiales dentro de un presupuesto real.
+          <section className="section" id="tecnologia">
+            <FadeIn delay={280} duration={900}>
+              <SectionHeader
+                eyebrow="Tecnología Base"
+                title="Una base técnica clara para orientar mejor antes de construir."
+                description="La experiencia combina información ordenada, un lenguaje simple y una base tecnológica flexible para evolucionar hacia recomendaciones más inteligentes."
+              />
+            </FadeIn>
+
+            <div className="split-layout tech-layout">
+              <FadeIn delay={360} duration={900}>
+                <article className="feature-card feature-card-primary tech-main-card">
+                  <h3 className="feature-title">Orientación clara para decidir mejor antes de construir.</h3>
+                  <p className="feature-description">
+                    La plataforma fue pensada para dar una primera orientación clara sobre qué vivienda conviene,
+                    cuánto podría costar y cómo se podría construir de forma progresiva.
                   </p>
-                </div>
-
-                <div className="flex items-start justify-start lg:justify-end">
-                  <div className="rounded-2xl border border-white/10 bg-black/20 px-5 py-4 text-sm leading-6 text-gray-300">
-                    • pensar una vivienda posible según el dinero disponible
-                    <br />• construir por etapas y crecer más adelante
-                    <br />• tomar decisiones más claras con menos desperdicio
+                  <div className="tech-pills">
+                    {['React', 'Bootstrap', 'Node.js', 'API REST', 'Cloud Computing', 'IA Generativa'].map((tech) => (
+                      <span key={tech} className="tech-pill">
+                        {tech}
+                      </span>
+                    ))}
                   </div>
-                </div>
+                </article>
+              </FadeIn>
+
+              <div className="stacked-cards">
+                {features.map((feature, index) => (
+                  <FadeIn key={feature.title} delay={440 + index * 110} duration={900}>
+                    <article className="feature-card">
+                      <h3 className="feature-title">{feature.title}</h3>
+                      <p className="feature-description">{feature.description}</p>
+                    </article>
+                  </FadeIn>
+                ))}
               </div>
             </div>
-          </FadeIn>
-        </section>
+          </section>
+
+          <section className="section section-final" id="marketplace">
+            <FadeIn delay={300} duration={900}>
+              <SectionHeader
+                eyebrow="Marketplace"
+                title="Materiales, compras y decisiones básicas para gastar mejor."
+                description="La capa comercial de HabitatIA ordena alternativas y ayuda a comparar compras dentro de un presupuesto real, sin perder claridad ni foco."
+              />
+            </FadeIn>
+
+            <FadeIn delay={400} duration={900}>
+              <article className="feature-card marketplace-card">
+                <div className="marketplace-layout">
+                  <div>
+                    <h3 className="feature-title">Comprar con criterio, comparar opciones y construir por etapas.</h3>
+                    <p className="feature-description">
+                      La propuesta de HabitatIA también contempla una capa de marketplace para orientar compras,
+                      comparar alternativas y optimizar materiales dentro de un presupuesto real.
+                    </p>
+                  </div>
+
+                  <div className="marketplace-bullets">
+                    <div>• pensar una vivienda posible según el dinero disponible</div>
+                    <div>• construir por etapas y crecer más adelante</div>
+                    <div>• tomar decisiones más claras con menos desperdicio</div>
+                  </div>
+                </div>
+              </article>
+            </FadeIn>
+          </section>
+        </div>
       </div>
     </main>
   )
