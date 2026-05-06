@@ -17,6 +17,13 @@ type Stat = {
   value: string
 }
 
+const navigation = [
+  { label: 'Propuesta', href: '#propuesta' },
+  { label: 'Impacto', href: '#impacto' },
+  { label: 'Tecnología', href: '#tecnologia' },
+  { label: 'Marketplace', href: '#marketplace' },
+]
+
 const stats: Stat[] = [
   { label: 'Diseños modulares', value: '100%' },
   { label: 'Enfoque sostenible', value: 'Triple impacto' },
@@ -77,21 +84,144 @@ function FadeIn({ children, delay = 0, duration = 1000, className = '' }: FadeIn
   )
 }
 
+type AnimatedHeadingProps = {
+  text: string
+  delay?: number
+  charDelay?: number
+  duration?: number
+  className?: string
+}
+
+function AnimatedHeading({
+  text,
+  delay = 200,
+  charDelay = 30,
+  duration = 500,
+  className = '',
+}: AnimatedHeadingProps) {
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setVisible(true), delay)
+    return () => window.clearTimeout(timer)
+  }, [delay])
+
+  const lines = text.split('\n')
+
+  return (
+    <h1
+      className={`text-4xl font-normal leading-none text-white md:text-5xl lg:text-6xl xl:text-7xl ${className}`.trim()}
+      style={{ letterSpacing: '-0.04em' }}
+    >
+      {lines.map((line, lineIndex) => {
+        const lineLength = line.length
+        return (
+          <span key={`${line}-${lineIndex}`} className="block">
+            {line.split('').map((char, charIndex) => {
+              const transitionDelay = lineIndex * lineLength * charDelay + charIndex * charDelay
+              return (
+                <span
+                  key={`${char}-${lineIndex}-${charIndex}`}
+                  className="inline-block"
+                  style={{
+                    opacity: visible ? 1 : 0,
+                    transform: visible ? 'translateX(0)' : 'translateX(-18px)',
+                    transitionProperty: 'opacity, transform',
+                    transitionDuration: `${duration}ms`,
+                    transitionDelay: `${transitionDelay}ms`,
+                    transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                    whiteSpace: 'pre',
+                  }}
+                >
+                  {char === ' ' ? '\u00A0' : char}
+                </span>
+              )
+            })}
+          </span>
+        )
+      })}
+    </h1>
+  )
+}
+
 function App() {
   return (
-    <main className="min-h-screen bg-black text-white font-sans">
-      <section className="relative h-screen overflow-hidden">
-        <video
-          className="h-full w-full object-cover"
-          src="/habitatia-background.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-        />
-      </section>
+    <main className="relative min-h-screen overflow-hidden bg-black text-white font-sans">
+      <video
+        className="fixed inset-0 h-full w-full object-cover"
+        src="/habitatia-background.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
 
-      <div className="px-6 py-8 md:px-12 lg:px-16 lg:py-12">
+      <div className="relative z-10 min-h-screen px-6 pt-6 md:px-12 lg:px-16">
+        <header>
+          <div className="liquid-glass flex items-center justify-between rounded-xl px-4 py-2 text-white">
+            <div className="text-2xl font-semibold tracking-tight">HabitatIA</div>
+
+            <nav className="hidden items-center gap-8 text-sm text-white/90 md:flex">
+              {navigation.map((item) => (
+                <a key={item.href} className="transition-colors hover:text-gray-300" href={item.href}>
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+
+            <a
+              href="#propuesta"
+              className="rounded-lg bg-white px-6 py-2 text-sm font-medium text-black transition-colors hover:bg-gray-100"
+            >
+              Empezar ahora
+            </a>
+          </div>
+        </header>
+
+        <section className="flex min-h-[calc(100vh-6rem)] flex-1 pb-12 lg:pb-16">
+          <div className="flex h-full w-full flex-col justify-end">
+            <div className="lg:grid lg:grid-cols-2 lg:items-end">
+              <div className="max-w-4xl">
+                <AnimatedHeading text={'Diseñamos viviendas\nposibles con IA.'} className="mb-4" />
+
+                <FadeIn delay={800} duration={1000} className="mb-5 max-w-2xl">
+                  <p className="text-base text-gray-300 md:text-lg">
+                    HabitatIA ayuda a planificar una vivienda simple, funcional y sostenible, priorizando el costo,
+                    el aprovechamiento de materiales y la posibilidad de crecer por etapas.
+                  </p>
+                </FadeIn>
+
+                <FadeIn delay={1200} duration={1000}>
+                  <div className="flex flex-wrap gap-4">
+                    <a
+                      href="#propuesta"
+                      className="rounded-lg bg-white px-8 py-3 font-medium text-black transition-colors hover:bg-gray-100"
+                    >
+                      Iniciar conversación
+                    </a>
+                    <a
+                      href="#marketplace"
+                      className="liquid-glass rounded-lg border border-white/20 px-8 py-3 font-medium text-white transition-colors hover:bg-white hover:text-black"
+                    >
+                      Ver marketplace
+                    </a>
+                  </div>
+                </FadeIn>
+              </div>
+
+              <div className="mt-8 flex items-end justify-start lg:mt-0 lg:justify-end">
+                <FadeIn delay={1400} duration={1000}>
+                  <div className="liquid-glass rounded-xl border border-white/20 px-6 py-3">
+                    <p className="text-lg font-light text-white md:text-xl lg:text-2xl">
+                      Vivienda accesible. Modular. Sostenible.
+                    </p>
+                  </div>
+                </FadeIn>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="pb-8" id="propuesta">
           <FadeIn delay={200} duration={900}>
             <div className="grid gap-4 md:grid-cols-3">
