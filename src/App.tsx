@@ -294,7 +294,7 @@ function App() {
                 />
 
                 <FadeIn delay={1200} duration={900}>
-                  <div className="mt-24 flex flex-wrap gap-3 mb-8 lg:mt-28 lg:mb-10">
+                  <div className="mt-40 flex flex-wrap gap-3 mb-8 lg:mt-44 lg:mb-10">
                     <a href="#propuesta" className="hero-btn-primary">Empezar ahora</a>
                     <a href="#propuesta" className="hero-btn-outlined">Ver propuesta</a>
                   </div>
