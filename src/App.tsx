@@ -408,6 +408,8 @@ function App() {
         })
 
         magicCards.forEach((card) => {
+          const isTechSectionCard = Boolean(card.closest('#tecnologia'))
+
           const spawnParticleBurst = (x: number, y: number) => {
             for (let index = 0; index < 8; index += 1) {
               const particle = document.createElement('span')
@@ -441,6 +443,8 @@ function App() {
           }
 
           const handleMove = (event: MouseEvent) => {
+            if (isTechSectionCard) return
+
             const rect = card.getBoundingClientRect()
             const x = event.clientX - rect.left
             const y = event.clientY - rect.top
@@ -470,6 +474,9 @@ function App() {
 
           const handleLeave = () => {
             card.style.setProperty('--glow-intensity', '0')
+
+            if (isTechSectionCard) return
+
             gsap.to(card, {
               rotateX: 0,
               rotateY: 0,
