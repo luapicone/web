@@ -72,24 +72,6 @@ const impacts: FeatureCard[] = [
   },
 ]
 
-const remodelingSteps: FeatureCard[] = [
-  {
-    title: '1. Sacás una foto del ambiente',
-    description:
-      'Capturás cocina, baño, living o dormitorio y la IA toma esa base real para entender distribución, superficies y estilo actual.',
-  },
-  {
-    title: '2. La IA recomienda materiales',
-    description:
-      'El sistema sugiere pisos, revestimientos, colores, texturas y combinaciones posibles según el ambiente que querés renovar.',
-  },
-  {
-    title: '3. Probás opciones y ves el resultado',
-    description:
-      'Podés ir seleccionando materiales y la IA te muestra en pantalla cómo quedaría el espacio antes de tomar una decisión.',
-  },
-]
-
 const remodelingMaterials = ['Pisos', 'Revestimientos', 'Pinturas', 'Iluminación', 'Maderas', 'Terminaciones']
 
 function FadeIn({ children, delay = 0, duration = 1000, className = '' }: FadeInProps) {
@@ -770,22 +752,11 @@ function App() {
                 </article>
               </FadeIn>
 
-              <div className="stacked-cards remodel-steps">
-                <FadeIn delay={400} duration={900}>
-                  <div className="remodel-carousel-card">
-                    <RemodelCarousel />
-                  </div>
-                </FadeIn>
-
-                {remodelingSteps.map((step, index) => (
-                  <FadeIn key={step.title} delay={470 + index * 110} duration={900}>
-                    <article className="feature-card remodel-step-card">
-                      <h3 className="feature-title">{step.title}</h3>
-                      <p className="feature-description">{step.description}</p>
-                    </article>
-                  </FadeIn>
-                ))}
-              </div>
+              <FadeIn delay={400} duration={900}>
+                <div className="remodel-carousel-card">
+                  <RemodelCarousel />
+                </div>
+              </FadeIn>
             </div>
             </div>
           </section>
