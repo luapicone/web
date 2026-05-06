@@ -179,7 +179,7 @@ function App() {
           </div>
         </header>
 
-        <section className="flex min-h-[calc(100vh-6rem)] flex-1 pb-12 pt-20 lg:pb-16 lg:pt-28">
+        <section className="flex min-h-[calc(100vh-6rem)] flex-1 pb-12 pt-12 lg:pb-16 lg:pt-20">
           <div className="flex h-full w-full flex-col justify-end">
             <div className="lg:grid lg:grid-cols-2 lg:items-end">
               <div className="max-w-4xl">
