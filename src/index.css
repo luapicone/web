@@ -606,7 +606,7 @@ a {
 
 .remodel-carousel-track {
   position: relative;
-  min-height: 34rem;
+  min-height: 43rem;
 }
 
 .remodel-carousel-slide {
@@ -640,7 +640,7 @@ a {
 
 .remodel-carousel-image {
   display: block;
-  width: min(92%, 430px);
+  width: min(100%, 520px);
   max-width: 100%;
   aspect-ratio: 9 / 16;
   object-fit: contain;
@@ -1005,11 +1005,11 @@ a {
   }
 
   .remodel-carousel-track {
-    min-height: 30rem;
+    min-height: 34rem;
   }
 
   .remodel-carousel-image {
-    width: min(92%, 360px);
+    width: min(96%, 420px);
   }
 
   .magic-card {
