@@ -312,8 +312,8 @@ function App() {
                           </svg>
                         </div>
                         <div>
-                          <div className="hero-stat-value text-[1.9rem] md:text-[2.35rem] lg:text-[2.8rem]">+120</div>
-                          <div className="hero-stat-label text-sm md:text-base lg:text-lg">viviendas planificadas</div>
+                          <div className="hero-stat-value text-[1.7rem] md:text-[2.1rem] lg:text-[2.45rem]">+120</div>
+                          <div className="hero-stat-label text-[0.92rem] md:text-[0.98rem] lg:text-[1.05rem]">viviendas planificadas</div>
                         </div>
                       </div>
                       <div className="hero-stat-sep" />
@@ -325,8 +325,8 @@ function App() {
                           </svg>
                         </div>
                         <div>
-                          <div className="hero-stat-value text-[1.9rem] md:text-[2.35rem] lg:text-[2.8rem]">30%</div>
-                          <div className="hero-stat-label text-sm md:text-base lg:text-lg">menos desperdicio de materiales</div>
+                          <div className="hero-stat-value text-[1.7rem] md:text-[2.1rem] lg:text-[2.45rem]">30%</div>
+                          <div className="hero-stat-label text-[0.92rem] md:text-[0.98rem] lg:text-[1.05rem]">menos desperdicio de materiales</div>
                         </div>
                       </div>
                     </div>
