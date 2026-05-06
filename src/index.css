@@ -640,7 +640,7 @@ a {
 
 .remodel-carousel-image {
   display: block;
-  width: min(82%, 360px);
+  width: min(92%, 430px);
   max-width: 100%;
   aspect-ratio: 9 / 16;
   object-fit: contain;
@@ -1009,7 +1009,7 @@ a {
   }
 
   .remodel-carousel-image {
-    width: min(86%, 320px);
+    width: min(92%, 360px);
   }
 
   .magic-card {
