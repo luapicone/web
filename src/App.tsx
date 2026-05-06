@@ -275,6 +275,7 @@ function App() {
       const grids = gsap.utils.toArray<HTMLElement>('.highlights-grid, .split-layout, .cards-grid, .stacked-cards, .marketplace-card', root)
       const cards = gsap.utils.toArray<HTMLElement>('.highlight-card, .feature-card, .marketplace-bullet, .tech-pill', root)
       const magicCards = gsap.utils.toArray<HTMLElement>('.highlight-card, .feature-card, .marketplace-bullets', root)
+      const sectionBeams = gsap.utils.toArray<HTMLElement>('.section-beams', root)
       const disableInteractiveFx = window.innerWidth <= 768 || window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
       headers.forEach((header) => {
@@ -336,6 +337,31 @@ function App() {
       magicCards.forEach((card) => {
         card.classList.add('magic-card')
         card.style.setProperty('--magic-glow-color', '132, 0, 255')
+      })
+
+      sectionBeams.forEach((beam, index) => {
+        const canvas = beam.querySelector('canvas')
+
+        gsap.to(beam, {
+          y: index % 2 === 0 ? -18 : 18,
+          x: index % 2 === 0 ? 10 : -10,
+          duration: 6.5 + index,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+        })
+
+        if (canvas) {
+          gsap.to(canvas, {
+            scale: index % 2 === 0 ? 1.08 : 1.12,
+            rotation: index % 2 === 0 ? -2.2 : 2.2,
+            duration: 8 + index,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut',
+            transformOrigin: '50% 50%',
+          })
+        }
       })
 
       if (!disableInteractiveFx && magicCards.length > 0) {
@@ -611,13 +637,13 @@ function App() {
           <section className="section" id="propuesta">
             <SectionBeams
               className="section-beams-propuesta"
-              beamWidth={1.8}
-              beamHeight={12}
-              beamNumber={9}
+              beamWidth={2.2}
+              beamHeight={13}
+              beamNumber={11}
               lightColor="#2274ff"
-              speed={1.4}
-              noiseIntensity={1.2}
-              scale={0.18}
+              speed={2.1}
+              noiseIntensity={1.55}
+              scale={0.24}
               rotation={-8}
             />
 
@@ -668,13 +694,13 @@ function App() {
           <section className="section" id="impacto">
             <SectionBeams
               className="section-beams-impacto"
-              beamWidth={1.9}
-              beamHeight={13}
-              beamNumber={10}
+              beamWidth={2.1}
+              beamHeight={14}
+              beamNumber={11}
               lightColor="#d4af37"
-              speed={1.6}
-              noiseIntensity={1.35}
-              scale={0.2}
+              speed={2.2}
+              noiseIntensity={1.65}
+              scale={0.24}
               rotation={6}
             />
 
@@ -703,13 +729,13 @@ function App() {
           <section className="section" id="tecnologia">
             <SectionBeams
               className="section-beams-tecnologia"
-              beamWidth={1.7}
-              beamHeight={14}
-              beamNumber={11}
+              beamWidth={2}
+              beamHeight={15}
+              beamNumber={12}
               lightColor="#7c3aed"
-              speed={1.8}
-              noiseIntensity={1.45}
-              scale={0.16}
+              speed={2.35}
+              noiseIntensity={1.7}
+              scale={0.22}
               rotation={-4}
             />
 
@@ -757,13 +783,13 @@ function App() {
           <section className="section section-final" id="marketplace">
             <SectionBeams
               className="section-beams-marketplace"
-              beamWidth={1.8}
-              beamHeight={12}
-              beamNumber={8}
+              beamWidth={2.1}
+              beamHeight={13}
+              beamNumber={10}
               lightColor="#60a5fa"
-              speed={1.35}
-              noiseIntensity={1.1}
-              scale={0.15}
+              speed={2}
+              noiseIntensity={1.5}
+              scale={0.22}
               rotation={8}
             />
 
