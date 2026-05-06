@@ -171,26 +171,43 @@ function AnimatedText({
   return (
     <div className={className}>
       {lines.map((line, lineIndex) => {
-        const lineLength = line.length
+        const words = line.split(' ')
+        let charOffset = 0
+
         return (
           <span key={`${line}-${lineIndex}`} className="block">
-            {line.split('').map((char, charIndex) => {
-              const transitionDelay = lineIndex * lineLength * charDelay + charIndex * charDelay
+            {words.map((word, wordIndex) => {
+              const wordNode = (
+                <span key={`${word}-${lineIndex}-${wordIndex}`} className="inline-block whitespace-nowrap">
+                  {word.split('').map((char, charIndex) => {
+                    const transitionDelay = (charOffset + charIndex) * charDelay + lineIndex * line.length * charDelay
+                    return (
+                      <span
+                        key={`${char}-${lineIndex}-${wordIndex}-${charIndex}`}
+                        className="inline-block"
+                        style={{
+                          opacity: visible ? 1 : 0,
+                          transform: visible ? 'translateX(0)' : 'translateX(-16px)',
+                          transitionProperty: 'opacity, transform',
+                          transitionDuration: `${duration}ms`,
+                          transitionDelay: `${transitionDelay}ms`,
+                          transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                          whiteSpace: 'pre',
+                        }}
+                      >
+                        {char}
+                      </span>
+                    )
+                  })}
+                </span>
+              )
+
+              charOffset += word.length + 1
+
               return (
-                <span
-                  key={`${char}-${lineIndex}-${charIndex}`}
-                  className="inline-block"
-                  style={{
-                    opacity: visible ? 1 : 0,
-                    transform: visible ? 'translateX(0)' : 'translateX(-16px)',
-                    transitionProperty: 'opacity, transform',
-                    transitionDuration: `${duration}ms`,
-                    transitionDelay: `${transitionDelay}ms`,
-                    transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-                    whiteSpace: 'pre',
-                  }}
-                >
-                  {char === ' ' ? '\u00A0' : char}
+                <span key={`group-${lineIndex}-${wordIndex}`}>
+                  {wordNode}
+                  {wordIndex < words.length - 1 ? <span className="inline-block">&nbsp;</span> : null}
                 </span>
               )
             })}
