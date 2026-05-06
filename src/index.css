@@ -308,6 +308,92 @@ a {
     0 28px 64px rgba(0, 0, 0, 0.36);
 }
 
+.magic-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transform-style: preserve-3d;
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --magic-glow-color: 132, 0, 255;
+}
+
+.magic-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    420px circle at var(--glow-x) var(--glow-y),
+    rgba(var(--magic-glow-color), calc(var(--glow-intensity) * 0.16)) 0%,
+    rgba(var(--magic-glow-color), calc(var(--glow-intensity) * 0.08)) 22%,
+    rgba(var(--magic-glow-color), calc(var(--glow-intensity) * 0.04)) 38%,
+    transparent 68%
+  );
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.magic-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: radial-gradient(
+    260px circle at var(--glow-x) var(--glow-y),
+    rgba(var(--magic-glow-color), calc(var(--glow-intensity) * 0.95)) 0%,
+    rgba(var(--magic-glow-color), calc(var(--glow-intensity) * 0.42)) 28%,
+    transparent 65%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.magic-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.cards-spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 760px;
+  height: 760px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 120;
+  mix-blend-mode: screen;
+  background: radial-gradient(circle, rgba(132, 0, 255, 0.16) 0%, rgba(132, 0, 255, 0.09) 18%, rgba(132, 0, 255, 0.04) 34%, rgba(132, 0, 255, 0.01) 54%, transparent 70%);
+  transform: translate(-50%, -50%);
+}
+
+.magic-particle,
+.magic-ripple {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 999px;
+  z-index: 3;
+}
+
+.magic-particle {
+  width: 5px;
+  height: 5px;
+  background: rgba(172, 92, 255, 1);
+  box-shadow: 0 0 10px rgba(172, 92, 255, 0.7);
+}
+
+.magic-ripple {
+  background: radial-gradient(circle, rgba(132, 0, 255, 0.28) 0%, rgba(132, 0, 255, 0.16) 35%, transparent 72%);
+}
+
 .highlight-card {
   padding: 1.8rem 1.8rem 1.6rem;
 }
@@ -437,6 +523,16 @@ a {
   flex-shrink: 0;
   position: relative;
   top: -1px;
+}
+
+@media (max-width: 768px) {
+  .magic-card {
+    transform: none !important;
+  }
+
+  .cards-spotlight {
+    display: none;
+  }
 }
 
 @media (min-width: 768px) {

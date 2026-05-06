@@ -244,6 +244,8 @@ function App() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
 
+    const cleanups: Array<() => void> = []
+
     const ctx = gsap.context(() => {
       const root = lowerContentRef.current
       if (!root) return
@@ -251,6 +253,8 @@ function App() {
       const headers = gsap.utils.toArray<HTMLElement>('.section-header', root)
       const grids = gsap.utils.toArray<HTMLElement>('.highlights-grid, .split-layout, .cards-grid, .stacked-cards, .marketplace-card', root)
       const cards = gsap.utils.toArray<HTMLElement>('.highlight-card, .feature-card, .marketplace-bullet, .tech-pill', root)
+      const magicCards = gsap.utils.toArray<HTMLElement>('.highlight-card, .feature-card, .marketplace-bullets', root)
+      const disableInteractiveFx = window.innerWidth <= 768 || window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
       headers.forEach((header) => {
         gsap.fromTo(
@@ -308,10 +312,174 @@ function App() {
         },
       })
 
+      magicCards.forEach((card) => {
+        card.classList.add('magic-card')
+        card.style.setProperty('--magic-glow-color', '132, 0, 255')
+      })
+
+      if (!disableInteractiveFx && magicCards.length > 0) {
+        const spotlight = document.createElement('div')
+        spotlight.className = 'cards-spotlight'
+        document.body.appendChild(spotlight)
+
+        const handleDocumentMove = (event: MouseEvent) => {
+          const pointerX = event.clientX
+          const pointerY = event.clientY
+          let insideAnyCard = false
+
+          magicCards.forEach((card) => {
+            const rect = card.getBoundingClientRect()
+            const inside = pointerX >= rect.left && pointerX <= rect.right && pointerY >= rect.top && pointerY <= rect.bottom
+
+            if (inside) {
+              insideAnyCard = true
+              const relativeX = ((pointerX - rect.left) / rect.width) * 100
+              const relativeY = ((pointerY - rect.top) / rect.height) * 100
+              card.style.setProperty('--glow-x', `${relativeX}%`)
+              card.style.setProperty('--glow-y', `${relativeY}%`)
+              card.style.setProperty('--glow-intensity', '1')
+            } else {
+              card.style.setProperty('--glow-intensity', '0')
+            }
+          })
+
+          gsap.to(spotlight, {
+            x: pointerX,
+            y: pointerY,
+            opacity: insideAnyCard ? 0.75 : 0,
+            duration: insideAnyCard ? 0.18 : 0.35,
+            ease: 'power2.out',
+            overwrite: true,
+          })
+        }
+
+        document.addEventListener('mousemove', handleDocumentMove)
+        cleanups.push(() => {
+          document.removeEventListener('mousemove', handleDocumentMove)
+          spotlight.remove()
+        })
+
+        magicCards.forEach((card) => {
+          const spawnParticleBurst = (x: number, y: number) => {
+            for (let index = 0; index < 8; index += 1) {
+              const particle = document.createElement('span')
+              particle.className = 'magic-particle'
+              particle.style.left = `${x}px`
+              particle.style.top = `${y}px`
+              card.appendChild(particle)
+
+              gsap.fromTo(
+                particle,
+                { x: 0, y: 0, scale: 0.4, opacity: 0 },
+                {
+                  x: (Math.random() - 0.5) * 90,
+                  y: (Math.random() - 0.5) * 90,
+                  scale: 1,
+                  opacity: 1,
+                  duration: 0.28,
+                  ease: 'back.out(1.7)',
+                  onComplete: () => {
+                    gsap.to(particle, {
+                      opacity: 0,
+                      scale: 0.2,
+                      duration: 0.45,
+                      ease: 'power2.out',
+                      onComplete: () => particle.remove(),
+                    })
+                  },
+                },
+              )
+            }
+          }
+
+          const handleMove = (event: MouseEvent) => {
+            const rect = card.getBoundingClientRect()
+            const x = event.clientX - rect.left
+            const y = event.clientY - rect.top
+            const centerX = rect.width / 2
+            const centerY = rect.height / 2
+            const rotateX = ((y - centerY) / centerY) * -5
+            const rotateY = ((x - centerX) / centerX) * 7
+            const magnetX = (x - centerX) * 0.03
+            const magnetY = (y - centerY) * 0.03
+
+            gsap.to(card, {
+              rotateX,
+              rotateY,
+              x: magnetX,
+              y: magnetY,
+              duration: 0.22,
+              ease: 'power2.out',
+              transformPerspective: 1000,
+              overwrite: true,
+            })
+          }
+
+          const handleEnter = (event: MouseEvent) => {
+            const rect = card.getBoundingClientRect()
+            spawnParticleBurst(event.clientX - rect.left, event.clientY - rect.top)
+          }
+
+          const handleLeave = () => {
+            card.style.setProperty('--glow-intensity', '0')
+            gsap.to(card, {
+              rotateX: 0,
+              rotateY: 0,
+              x: 0,
+              y: 0,
+              duration: 0.35,
+              ease: 'power2.out',
+              overwrite: true,
+            })
+          }
+
+          const handleClick = (event: MouseEvent) => {
+            const rect = card.getBoundingClientRect()
+            const x = event.clientX - rect.left
+            const y = event.clientY - rect.top
+            const radius = Math.max(rect.width, rect.height)
+            const ripple = document.createElement('span')
+            ripple.className = 'magic-ripple'
+            ripple.style.width = `${radius * 1.6}px`
+            ripple.style.height = `${radius * 1.6}px`
+            ripple.style.left = `${x - radius * 0.8}px`
+            ripple.style.top = `${y - radius * 0.8}px`
+            card.appendChild(ripple)
+
+            gsap.fromTo(
+              ripple,
+              { scale: 0, opacity: 0.9 },
+              {
+                scale: 1,
+                opacity: 0,
+                duration: 0.75,
+                ease: 'power2.out',
+                onComplete: () => ripple.remove(),
+              },
+            )
+          }
+
+          card.addEventListener('mousemove', handleMove)
+          card.addEventListener('mouseenter', handleEnter)
+          card.addEventListener('mouseleave', handleLeave)
+          card.addEventListener('click', handleClick)
+
+          cleanups.push(() => {
+            card.removeEventListener('mousemove', handleMove)
+            card.removeEventListener('mouseenter', handleEnter)
+            card.removeEventListener('mouseleave', handleLeave)
+            card.removeEventListener('click', handleClick)
+          })
+        })
+      }
+
       ScrollTrigger.refresh()
     }, lowerContentRef)
 
-    return () => ctx.revert()
+    return () => {
+      cleanups.forEach((cleanup) => cleanup())
+      ctx.revert()
+    }
   }, [])
 
   return (
