@@ -1,4 +1,6 @@
-import { useEffect, useState, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 type FadeInProps = {
   children: ReactNode
@@ -237,6 +239,81 @@ function SectionHeader({ eyebrow, title, description }: SectionHeaderProps) {
 }
 
 function App() {
+  const lowerContentRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger)
+
+    const ctx = gsap.context(() => {
+      const root = lowerContentRef.current
+      if (!root) return
+
+      const headers = gsap.utils.toArray<HTMLElement>('.section-header', root)
+      const grids = gsap.utils.toArray<HTMLElement>('.highlights-grid, .split-layout, .cards-grid, .stacked-cards, .marketplace-card', root)
+      const cards = gsap.utils.toArray<HTMLElement>('.highlight-card, .feature-card, .marketplace-bullet, .tech-pill', root)
+
+      headers.forEach((header) => {
+        gsap.fromTo(
+          header,
+          { opacity: 0, y: 32 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.95,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: header,
+              start: 'top 84%',
+              once: true,
+            },
+          },
+        )
+      })
+
+      grids.forEach((grid) => {
+        gsap.fromTo(
+          grid,
+          { opacity: 0, y: 36 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: grid,
+              start: 'top 85%',
+              once: true,
+            },
+          },
+        )
+      })
+
+      ScrollTrigger.batch(cards, {
+        start: 'top 88%',
+        once: true,
+        onEnter: (batch) => {
+          gsap.fromTo(
+            batch,
+            { opacity: 0, y: 28, scale: 0.985 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.9,
+              stagger: 0.1,
+              ease: 'power3.out',
+              overwrite: true,
+            },
+          )
+        },
+      })
+
+      ScrollTrigger.refresh()
+    }, lowerContentRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
     <main className="min-h-screen bg-black text-white font-sans">
       <section className="relative min-h-screen overflow-hidden px-6 pt-6 md:px-12 lg:px-16">
@@ -340,7 +417,7 @@ function App() {
         </div>
       </section>
 
-      <div className="content-shell px-6 py-10 md:px-12 md:py-14 lg:px-16 lg:py-16">
+      <div ref={lowerContentRef} className="content-shell px-6 py-10 md:px-12 md:py-14 lg:px-16 lg:py-16">
         <div className="content-container">
           <section className="section" id="propuesta">
             <FadeIn delay={180} duration={900}>
