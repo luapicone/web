@@ -23,6 +23,7 @@ type Stat = {
 
 const navigation = [
   { label: 'Propuesta', href: '#propuesta' },
+  { label: 'Remodelación IA', href: '#remodelacion' },
   { label: 'Impacto', href: '#impacto' },
   { label: 'Tecnología', href: '#tecnologia' },
   { label: 'Marketplace', href: '#marketplace' },
@@ -69,6 +70,26 @@ const impacts: FeatureCard[] = [
       'Ayuda a tomar decisiones más claras para construir con menos errores y menos gasto innecesario.',
   },
 ]
+
+const remodelingSteps: FeatureCard[] = [
+  {
+    title: '1. Sacás una foto del ambiente',
+    description:
+      'Capturás cocina, baño, living o dormitorio y la IA toma esa base real para entender distribución, superficies y estilo actual.',
+  },
+  {
+    title: '2. La IA recomienda materiales',
+    description:
+      'El sistema sugiere pisos, revestimientos, colores, texturas y combinaciones posibles según el ambiente que querés renovar.',
+  },
+  {
+    title: '3. Probás opciones y ves el resultado',
+    description:
+      'Podés ir seleccionando materiales y la IA te muestra en pantalla cómo quedaría el espacio antes de tomar una decisión.',
+  },
+]
+
+const remodelingMaterials = ['Pisos', 'Revestimientos', 'Pinturas', 'Iluminación', 'Maderas', 'Terminaciones']
 
 function FadeIn({ children, delay = 0, duration = 1000, className = '' }: FadeInProps) {
   const [visible, setVisible] = useState(false)
@@ -700,6 +721,67 @@ function App() {
           </section>
 
           <BeforeAfterShowcase />
+
+          <section className="section section-remodelacion" id="remodelacion">
+            <SectionBeams
+              className="section-beams-remodelacion"
+              beamWidth={2.1}
+              beamHeight={14}
+              beamNumber={11}
+              lightColor="#34d399"
+              speed={2.15}
+              noiseIntensity={1.6}
+              scale={0.23}
+              rotation={-7}
+            />
+
+            <div className="section-content">
+            <FadeIn delay={260} duration={900}>
+              <SectionHeader
+                eyebrow="Remodelación asistida"
+                title="Sacás una foto de un ambiente y la IA te ayuda a remodelarlo antes de comprar materiales."
+                description="HabitatIA también va a permitir visualizar una remodelación real sobre un espacio existente, recomendando materiales y mostrando en tiempo real cómo cambia el ambiente con cada elección."
+              />
+            </FadeIn>
+
+            <div className="split-layout remodel-layout">
+              <FadeIn delay={340} duration={900}>
+                <article className="feature-card feature-card-primary remodel-main-card">
+                  <div className="card-eyebrow">Nueva funcionalidad</div>
+                  <h3 className="feature-title">Una experiencia guiada para remodelar con más claridad visual.</h3>
+                  <p className="feature-description">
+                    Desde una simple foto, la plataforma va a detectar oportunidades de mejora y proponer materiales que ayuden a renovar el ambiente con una referencia visual mucho más concreta.
+                  </p>
+
+                  <div className="remodel-materials">
+                    {remodelingMaterials.map((material) => (
+                      <span key={material} className="remodel-material-pill">
+                        {material}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="marketplace-bullets remodel-bullets">
+                    <div className="marketplace-bullet">subís la foto de un ambiente real de tu casa</div>
+                    <div className="marketplace-bullet">la IA recomienda materiales acordes al espacio</div>
+                    <div className="marketplace-bullet">elegís alternativas y ves cómo quedaría el resultado final</div>
+                  </div>
+                </article>
+              </FadeIn>
+
+              <div className="stacked-cards remodel-steps">
+                {remodelingSteps.map((step, index) => (
+                  <FadeIn key={step.title} delay={420 + index * 110} duration={900}>
+                    <article className="feature-card remodel-step-card">
+                      <h3 className="feature-title">{step.title}</h3>
+                      <p className="feature-description">{step.description}</p>
+                    </article>
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
+            </div>
+          </section>
 
           <section className="section" id="impacto">
             <SectionBeams
