@@ -7,6 +7,65 @@ type FadeInProps = {
   className?: string
 }
 
+type FeatureCard = {
+  title: string
+  description: string
+}
+
+type Stat = {
+  label: string
+  value: string
+}
+
+const navigation = [
+  { label: 'Propuesta', href: '#propuesta' },
+  { label: 'Impacto', href: '#impacto' },
+  { label: 'Tecnología', href: '#tecnologia' },
+  { label: 'Marketplace', href: '#marketplace' },
+]
+
+const stats: Stat[] = [
+  { label: 'Diseños modulares', value: '100%' },
+  { label: 'Enfoque sostenible', value: 'Triple impacto' },
+  { label: 'Tecnología base', value: 'React + Node.js' },
+]
+
+const features: FeatureCard[] = [
+  {
+    title: 'Vivienda accesible',
+    description:
+      'Propuestas pensadas para familias que necesitan una solución habitacional posible de construir y ampliar.',
+  },
+  {
+    title: 'Menor costo de obra',
+    description:
+      'Estimaciones orientadas a reducir materiales innecesarios y aprovechar mejor el presupuesto disponible.',
+  },
+  {
+    title: 'Diseño para crecer',
+    description:
+      'Opciones modulares que permiten arrancar con lo esencial y ampliar la vivienda en el futuro.',
+  },
+]
+
+const impacts: FeatureCard[] = [
+  {
+    title: 'Impacto social',
+    description:
+      'Acerca una vivienda digna y funcional a familias que hoy necesitan construir con presupuestos ajustados.',
+  },
+  {
+    title: 'Impacto ambiental',
+    description:
+      'Promueve materiales y estrategias que ayudan a ahorrar energía y reducir desperdicios.',
+  },
+  {
+    title: 'Impacto económico',
+    description:
+      'Ayuda a tomar decisiones más claras para construir con menos errores y menos gasto innecesario.',
+  },
+]
+
 function FadeIn({ children, delay = 0, duration = 1000, className = '' }: FadeInProps) {
   const [visible, setVisible] = useState(false)
 
@@ -89,7 +148,7 @@ function App() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-black text-white font-sans">
       <video
-        className="absolute inset-0 h-full w-full object-cover"
+        className="fixed inset-0 h-full w-full object-cover"
         src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260403_050628_c4e32401-fab4-4a27-b7a8-6e9291cd5959.mp4"
         autoPlay
         loop
@@ -97,52 +156,55 @@ function App() {
         playsInline
       />
 
-      <div className="relative z-10 flex min-h-screen flex-col px-6 pt-6 md:px-12 lg:px-16">
+      <div className="relative z-10 min-h-screen px-6 pt-6 md:px-12 lg:px-16">
         <header>
           <div className="liquid-glass flex items-center justify-between rounded-xl px-4 py-2 text-white">
-            <div className="text-2xl font-semibold tracking-tight">VEX</div>
+            <div className="text-2xl font-semibold tracking-tight">HabitatIA</div>
 
             <nav className="hidden items-center gap-8 text-sm text-white/90 md:flex">
-              <a className="transition-colors hover:text-gray-300" href="#story">
-                Story
-              </a>
-              <a className="transition-colors hover:text-gray-300" href="#investing">
-                Investing
-              </a>
-              <a className="transition-colors hover:text-gray-300" href="#building">
-                Building
-              </a>
-              <a className="transition-colors hover:text-gray-300" href="#advisory">
-                Advisory
-              </a>
+              {navigation.map((item) => (
+                <a key={item.href} className="transition-colors hover:text-gray-300" href={item.href}>
+                  {item.label}
+                </a>
+              ))}
             </nav>
 
-            <button className="rounded-lg bg-white px-6 py-2 text-sm font-medium text-black transition-colors hover:bg-gray-100">
-              Start a Chat
-            </button>
+            <a
+              href="#propuesta"
+              className="rounded-lg bg-white px-6 py-2 text-sm font-medium text-black transition-colors hover:bg-gray-100"
+            >
+              Empezar ahora
+            </a>
           </div>
         </header>
 
-        <section className="flex-1 pb-12 lg:pb-16">
-          <div className="flex h-full flex-col justify-end">
+        <section className="flex min-h-[calc(100vh-6rem)] flex-1 pb-12 lg:pb-16">
+          <div className="flex h-full w-full flex-col justify-end">
             <div className="lg:grid lg:grid-cols-2 lg:items-end">
               <div className="max-w-4xl">
-                <AnimatedHeading text={'Shaping tomorrow\nwith vision and action.'} className="mb-4" />
+                <AnimatedHeading text={'Diseñamos viviendas\nposibles con IA.'} className="mb-4" />
 
-                <FadeIn delay={800} duration={1000} className="mb-5 max-w-xl">
+                <FadeIn delay={800} duration={1000} className="mb-5 max-w-2xl">
                   <p className="text-base text-gray-300 md:text-lg">
-                    We back visionaries and craft ventures that define what comes next.
+                    HabitatIA ayuda a planificar una vivienda simple, funcional y sostenible, priorizando el costo,
+                    el aprovechamiento de materiales y la posibilidad de crecer por etapas.
                   </p>
                 </FadeIn>
 
                 <FadeIn delay={1200} duration={1000}>
                   <div className="flex flex-wrap gap-4">
-                    <button className="rounded-lg bg-white px-8 py-3 font-medium text-black transition-colors hover:bg-gray-100">
-                      Start a Chat
-                    </button>
-                    <button className="liquid-glass rounded-lg border border-white/20 px-8 py-3 font-medium text-white transition-colors hover:bg-white hover:text-black">
-                      Explore Now
-                    </button>
+                    <a
+                      href="#propuesta"
+                      className="rounded-lg bg-white px-8 py-3 font-medium text-black transition-colors hover:bg-gray-100"
+                    >
+                      Iniciar conversación
+                    </a>
+                    <a
+                      href="#marketplace"
+                      className="liquid-glass rounded-lg border border-white/20 px-8 py-3 font-medium text-white transition-colors hover:bg-white hover:text-black"
+                    >
+                      Ver marketplace
+                    </a>
                   </div>
                 </FadeIn>
               </div>
@@ -151,13 +213,140 @@ function App() {
                 <FadeIn delay={1400} duration={1000}>
                   <div className="liquid-glass rounded-xl border border-white/20 px-6 py-3">
                     <p className="text-lg font-light text-white md:text-xl lg:text-2xl">
-                      Investing. Building. Advisory.
+                      Vivienda accesible. Modular. Sostenible.
                     </p>
                   </div>
                 </FadeIn>
               </div>
             </div>
           </div>
+        </section>
+
+        <section className="pb-8" id="propuesta">
+          <FadeIn delay={200} duration={900}>
+            <div className="grid gap-4 md:grid-cols-3">
+              {stats.map((stat) => (
+                <div key={stat.label} className="liquid-glass rounded-2xl border border-white/10 px-5 py-5">
+                  <div className="text-2xl font-medium text-white">{stat.value}</div>
+                  <div className="mt-2 text-sm text-gray-300">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </section>
+
+        <section className="grid gap-6 pb-8 lg:grid-cols-[1.1fr_0.9fr]" id="story">
+          <FadeIn delay={250} duration={900}>
+            <div className="liquid-glass rounded-3xl border border-white/10 p-6 md:p-8">
+              <div className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-gray-300">Nuestra propuesta</div>
+              <h2 className="max-w-3xl text-3xl font-normal tracking-[-0.04em] text-white md:text-4xl">
+                Una herramienta pensada para viviendas posibles y reales.
+              </h2>
+              <p className="mt-4 max-w-2xl text-sm leading-6 text-gray-300 md:text-base">
+                Combinamos planificación simple, criterios de ahorro y diseño modular para acercar soluciones
+                habitacionales a familias que necesitan construir con recursos limitados.
+              </p>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={350} duration={900}>
+            <div className="liquid-glass rounded-3xl border border-white/10 p-6 md:p-8">
+              <div className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-gray-300">Objetivo del MVP</div>
+              <p className="text-sm leading-6 text-gray-300 md:text-base">
+                Construir una primera versión capaz de orientar a una familia sobre qué vivienda conviene, cuánto
+                podría costar y cómo se podría construir de forma progresiva.
+              </p>
+            </div>
+          </FadeIn>
+        </section>
+
+        <section className="pb-8" id="impacto">
+          <FadeIn delay={300} duration={900}>
+            <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+              <div>
+                <div className="text-xs font-medium uppercase tracking-[0.22em] text-gray-300">Triple impacto</div>
+                <h2 className="mt-2 text-3xl font-normal tracking-[-0.04em] text-white md:text-4xl">
+                  Tecnología aplicada a una vivienda digna, accesible y eficiente.
+                </h2>
+              </div>
+              <p className="max-w-xl text-sm leading-6 text-gray-300 md:text-base">
+                HabitatIA busca que más familias puedan proyectar una casa posible de construir y mejorar con el tiempo.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            {impacts.map((impact, index) => (
+              <FadeIn key={impact.title} delay={420 + index * 120} duration={900}>
+                <div className="liquid-glass h-full rounded-3xl border border-white/10 p-6">
+                  <h3 className="text-xl font-normal text-white">{impact.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-gray-300 md:text-base">{impact.description}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </section>
+
+        <section className="pb-8" id="tecnologia">
+          <div className="grid gap-4 lg:grid-cols-[1fr_1fr]">
+            <FadeIn delay={320} duration={900}>
+              <div className="liquid-glass rounded-3xl border border-white/10 p-6 md:p-8">
+                <div className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-gray-300">Tecnología base</div>
+                <h2 className="text-3xl font-normal tracking-[-0.04em] text-white md:text-4xl">
+                  Orientación clara para decidir mejor antes de construir.
+                </h2>
+                <p className="mt-4 text-sm leading-6 text-gray-300 md:text-base">
+                  La plataforma fue pensada para dar una primera orientación clara sobre qué vivienda conviene,
+                  cuánto podría costar y cómo se podría construir de forma progresiva.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-3 text-sm text-white">
+                  {['React', 'Bootstrap', 'Node.js', 'API REST', 'Cloud Computing', 'IA Generativa'].map((tech) => (
+                    <span key={tech} className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-gray-200">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
+
+            <div className="grid gap-4">
+              {features.map((feature, index) => (
+                <FadeIn key={feature.title} delay={420 + index * 120} duration={900}>
+                  <div className="liquid-glass rounded-3xl border border-white/10 p-6">
+                    <h3 className="text-xl font-normal text-white">{feature.title}</h3>
+                    <p className="mt-3 text-sm leading-6 text-gray-300 md:text-base">{feature.description}</p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="pb-12 lg:pb-16" id="marketplace">
+          <FadeIn delay={360} duration={900}>
+            <div className="liquid-glass rounded-3xl border border-white/10 p-6 md:p-8">
+              <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+                <div>
+                  <div className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-gray-300">Marketplace</div>
+                  <h2 className="text-3xl font-normal tracking-[-0.04em] text-white md:text-4xl">
+                    Materiales, espacios y decisiones básicas para gastar mejor.
+                  </h2>
+                  <p className="mt-4 max-w-2xl text-sm leading-6 text-gray-300 md:text-base">
+                    La propuesta de HabitatIA también contempla una capa de marketplace para orientar compras,
+                    comparar alternativas y optimizar materiales dentro de un presupuesto real.
+                  </p>
+                </div>
+
+                <div className="flex items-start justify-start lg:justify-end">
+                  <div className="rounded-2xl border border-white/10 bg-black/20 px-5 py-4 text-sm leading-6 text-gray-300">
+                    • pensar una vivienda posible según el dinero disponible
+                    <br />• construir por etapas y crecer más adelante
+                    <br />• tomar decisiones más claras con menos desperdicio
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
         </section>
       </div>
     </main>

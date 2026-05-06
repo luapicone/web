@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -12,6 +16,10 @@ body {
 
 #root {
   min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
 }
 
 .liquid-glass {
