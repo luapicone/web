@@ -579,7 +579,8 @@ a {
 }
 
 .remodel-bullets {
-  margin-top: 3.4rem;
+  margin-top: 1.5rem;
+  transform: translateY(2.2rem);
   background: rgba(255, 255, 255, 0.03);
 }
 
