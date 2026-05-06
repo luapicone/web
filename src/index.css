@@ -135,10 +135,10 @@ a {
 }
 
 .hero-stats-divider {
-  height: 1px;
-  max-width: 440px;
-  background: rgba(255, 255, 255, 0.18);
-  margin-bottom: 1rem;
+  height: 2px;
+  max-width: 560px;
+  background: rgba(255, 255, 255, 0.28);
+  margin-bottom: 1.2rem;
 }
 
 .hero-stats-row {
@@ -183,9 +183,9 @@ a {
 }
 
 .hero-stat-sep {
-  width: 1px;
-  height: 30px;
-  background: rgba(255, 255, 255, 0.18);
+  width: 2px;
+  height: 54px;
+  background: rgba(255, 255, 255, 0.28);
   flex-shrink: 0;
 }
 
