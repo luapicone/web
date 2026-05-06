@@ -772,10 +772,9 @@ function App() {
 
               <div className="stacked-cards remodel-steps">
                 <FadeIn delay={400} duration={900}>
-                  <article className="feature-card remodel-carousel-card">
-                    <div className="card-eyebrow">Carrusel del flujo</div>
+                  <div className="remodel-carousel-card">
                     <RemodelCarousel />
-                  </article>
+                  </div>
                 </FadeIn>
 
                 {remodelingSteps.map((step, index) => (

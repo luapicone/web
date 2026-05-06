@@ -584,10 +584,10 @@ a {
 }
 
 .remodel-carousel-card {
-  padding: 1rem;
-  border-color: rgba(52, 211, 153, 0.12);
-  background:
-    linear-gradient(180deg, rgba(7, 15, 20, 0.98) 0%, rgba(10, 13, 20, 0.95) 100%);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
 
 .remodel-carousel {
