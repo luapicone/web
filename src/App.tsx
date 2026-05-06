@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Beams from './components/Beams'
 import BeforeAfterShowcase from './components/BeforeAfterShowcase'
+import RemodelCarousel from './components/RemodelCarousel'
 
 type FadeInProps = {
   children: ReactNode
@@ -770,8 +771,15 @@ function App() {
               </FadeIn>
 
               <div className="stacked-cards remodel-steps">
+                <FadeIn delay={400} duration={900}>
+                  <article className="feature-card remodel-carousel-card">
+                    <div className="card-eyebrow">Carrusel del flujo</div>
+                    <RemodelCarousel />
+                  </article>
+                </FadeIn>
+
                 {remodelingSteps.map((step, index) => (
-                  <FadeIn key={step.title} delay={420 + index * 110} duration={900}>
+                  <FadeIn key={step.title} delay={470 + index * 110} duration={900}>
                     <article className="feature-card remodel-step-card">
                       <h3 className="feature-title">{step.title}</h3>
                       <p className="feature-description">{step.description}</p>

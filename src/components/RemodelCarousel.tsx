@@ -1,0 +1,84 @@
+import { useEffect, useState } from 'react'
+import firstImage from '../assets/remodel-carousel/01-remodel.png'
+import secondImage from '../assets/remodel-carousel/02-remodel.png'
+import thirdImage from '../assets/remodel-carousel/03-remodel.png'
+
+const slides = [
+  {
+    image: firstImage,
+    alt: 'Primer paso del flujo de remodelación asistida con IA',
+    label: 'Paso 1',
+    title: 'Foto inicial del ambiente',
+  },
+  {
+    image: secondImage,
+    alt: 'Segundo paso del flujo de remodelación asistida con IA',
+    label: 'Paso 2',
+    title: 'Recomendación y selección de materiales',
+  },
+  {
+    image: thirdImage,
+    alt: 'Tercer paso del flujo de remodelación asistida con IA',
+    label: 'Paso 3',
+    title: 'Visualización final del resultado',
+  },
+]
+
+export default function RemodelCarousel() {
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % slides.length)
+    }, 4500)
+
+    return () => window.clearInterval(interval)
+  }, [])
+
+  const goTo = (index: number) => setActiveIndex(index)
+  const goPrev = () => setActiveIndex((current) => (current - 1 + slides.length) % slides.length)
+  const goNext = () => setActiveIndex((current) => (current + 1) % slides.length)
+
+  return (
+    <div className="remodel-carousel">
+      <div className="remodel-carousel-frame">
+        <div
+          className="remodel-carousel-track"
+          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+        >
+          {slides.map((slide) => (
+            <figure key={slide.title} className="remodel-carousel-slide">
+              <img className="remodel-carousel-image" src={slide.image} alt={slide.alt} />
+              <figcaption className="remodel-carousel-caption">
+                <span className="remodel-carousel-step">{slide.label}</span>
+                <strong>{slide.title}</strong>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <div className="remodel-carousel-controls">
+          <button type="button" className="remodel-carousel-arrow" onClick={goPrev} aria-label="Imagen anterior">
+            ←
+          </button>
+          <button type="button" className="remodel-carousel-arrow" onClick={goNext} aria-label="Imagen siguiente">
+            →
+          </button>
+        </div>
+      </div>
+
+      <div className="remodel-carousel-dots" aria-label="Indicadores del carrusel">
+        {slides.map((slide, index) => (
+          <button
+            key={slide.title}
+            type="button"
+            className={`remodel-carousel-dot ${index === activeIndex ? 'is-active' : ''}`.trim()}
+            onClick={() => goTo(index)}
+            aria-label={`Ir a ${slide.label}`}
+            aria-pressed={index === activeIndex}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
