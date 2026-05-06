@@ -300,7 +300,7 @@ function App() {
                   </div>
                 </FadeIn>
 
-                <FadeIn delay={1500} duration={900} className="mt-32 lg:mt-44">
+                <FadeIn delay={1500} duration={900} className="mt-24 lg:mt-32">
                   <div>
                     <div className="hero-stats-divider" />
                     <div className="hero-stats-row">
