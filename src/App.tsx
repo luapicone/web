@@ -254,7 +254,7 @@ function App() {
           </div>
         </header>
 
-        <section className="flex min-h-[calc(100vh-6rem)] flex-1 pb-0 pt-12 lg:pb-0 lg:pt-20">
+        <section className="flex min-h-[calc(100vh-6rem)] flex-1 pb-0 pt-8 lg:pb-0 lg:pt-16">
           <div className="flex h-full w-full flex-col justify-end">
             <div className="lg:grid lg:grid-cols-2 lg:items-end">
               <div className="max-w-4xl">
