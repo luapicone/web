@@ -243,7 +243,7 @@ function App() {
               <div className="max-w-4xl">
                 <AnimatedHeading text={'Diseñamos viviendas\nposibles con IA.'} className="hero-heading mb-10 lg:mb-14" />
 
-                <div className="mt-[22rem] max-w-2xl lg:mt-[30rem] xl:mt-[34rem]">
+                <div className="mt-[20rem] max-w-2xl lg:mt-[28rem] xl:mt-[32rem]">
                   <AnimatedText
                     delay={800}
                     text={
@@ -254,8 +254,8 @@ function App() {
                 </div>
               </div>
 
-              <div className="mt-60 flex items-end justify-start lg:mt-0 lg:justify-end xl:mt-0">
-                <div className="lg:mt-[30rem] xl:mt-[34rem]">
+              <div className="mt-52 flex items-end justify-start lg:mt-0 lg:justify-end xl:mt-0">
+                <div className="lg:mt-[28rem] xl:mt-[32rem]">
                   <div className="hero-chip rounded-xl px-7 py-4 md:px-8">
                     <AnimatedText
                       delay={1400}
