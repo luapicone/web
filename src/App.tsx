@@ -272,33 +272,76 @@ function App() {
           </div>
         </header>
 
-        <section className="flex min-h-[calc(100vh-6rem)] flex-1 pb-0 pt-2 lg:pb-0 lg:pt-10">
+        <section className="flex min-h-[calc(100vh-6rem)] flex-1 pb-10 pt-2 lg:pb-14 lg:pt-10">
           <div className="flex h-full w-full flex-col justify-end">
             <div className="lg:grid lg:grid-cols-2 lg:items-end">
-              <div className="max-w-4xl">
-                <AnimatedHeading text={'Diseñamos viviendas\nposibles con IA.'} className="hero-heading mb-10 lg:mb-14" />
+              <div className="max-w-2xl">
+                <FadeIn delay={100} duration={800}>
+                  <div className="hero-eyebrow mb-5 md:mb-6">
+                    Planificación inteligente para vivienda accesible
+                  </div>
+                </FadeIn>
 
-                <div className="mt-[13rem] max-w-2xl lg:mt-[20rem] xl:mt-[24rem]">
-                  <AnimatedText
-                    delay={800}
-                    text={
-                      'HabitatIA ayuda a planificar una vivienda simple, funcional y sostenible, priorizando el costo,\nel aprovechamiento de materiales y la posibilidad de crecer por etapas.'
-                    }
-                    className="hero-copy text-[0.95rem] md:text-[1.08rem] lg:text-[1.22rem] xl:text-[1.36rem] leading-tight"
-                  />
-                </div>
+                <AnimatedHeading
+                  text={'Diseñamos\nviviendas posibles\ncon IA.'}
+                  className="hero-heading mb-7 lg:mb-8"
+                />
+
+                <AnimatedText
+                  delay={800}
+                  text={'HabitatIA te ayuda a planificar viviendas simples, funcionales y sostenibles, priorizando el costo, el aprovechamiento de materiales y la posibilidad de crecer por etapas.'}
+                  className="hero-copy text-[0.95rem] md:text-[1.05rem] lg:text-[1.15rem] leading-snug mb-9 lg:mb-11"
+                />
+
+                <FadeIn delay={1200} duration={900}>
+                  <div className="flex flex-wrap gap-3 mb-10 lg:mb-14">
+                    <a href="#propuesta" className="hero-btn-primary">Empezar ahora</a>
+                    <a href="#propuesta" className="hero-btn-outlined">Ver propuesta</a>
+                  </div>
+                </FadeIn>
+
+                <FadeIn delay={1500} duration={900}>
+                  <div>
+                    <div className="hero-stats-divider" />
+                    <div className="hero-stats-row">
+                      <div className="hero-stat-item">
+                        <div className="hero-stat-icon-wrap">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                          </svg>
+                        </div>
+                        <div>
+                          <div className="hero-stat-value">+120</div>
+                          <div className="hero-stat-label">viviendas planificadas</div>
+                        </div>
+                      </div>
+                      <div className="hero-stat-sep" />
+                      <div className="hero-stat-item">
+                        <div className="hero-stat-icon-wrap">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M17 8C8 10 5.9 16.17 3.82 19.34c-.11.16.04.34.2.26C7.38 17.9 13 15.57 17 8z"/>
+                            <path d="M3.82 19.34C8 15 11 13 17 8"/>
+                          </svg>
+                        </div>
+                        <div>
+                          <div className="hero-stat-value">30%</div>
+                          <div className="hero-stat-label">menos desperdicio de materiales</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </FadeIn>
               </div>
 
-              <div className="mt-28 flex items-end justify-start lg:mt-0 lg:justify-end xl:mt-0">
-                <div className="lg:mt-[20rem] xl:mt-[24rem]">
-                  <div className="hero-chip rounded-xl px-7 py-4 md:px-8">
-                    <AnimatedText
-                      delay={1400}
-                      charDelay={18}
-                      text={'Vivienda accesible. Modular. Sostenible.'}
-                      className="text-lg font-light text-white md:text-[1.4rem] lg:text-[1.8rem]"
-                    />
-                  </div>
+              <div className="mt-10 flex items-end justify-start lg:mt-0 lg:justify-end">
+                <div className="hero-chip rounded-xl px-7 py-4 md:px-8">
+                  <AnimatedText
+                    delay={1400}
+                    charDelay={18}
+                    text={'Vivienda accesible. Modular. Sostenible.'}
+                    className="text-lg font-light text-white md:text-[1.4rem] lg:text-[1.8rem]"
+                  />
                 </div>
               </div>
             </div>
