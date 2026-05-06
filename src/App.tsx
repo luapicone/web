@@ -588,6 +588,7 @@ function App() {
       <div ref={lowerContentRef} className="content-shell px-6 py-10 md:px-12 md:py-14 lg:px-16 lg:py-16">
         <div className="content-container">
           <section className="section" id="propuesta">
+            <div className="section-bg section-bg-propuesta" aria-hidden="true" />
             <FadeIn delay={180} duration={900}>
               <div className="highlights-grid">
                 {stats.map((stat) => (
@@ -631,6 +632,7 @@ function App() {
           </section>
 
           <section className="section" id="impacto">
+            <div className="section-bg section-bg-impacto" aria-hidden="true" />
             <FadeIn delay={260} duration={900}>
               <SectionHeader
                 eyebrow="Triple impacto"
@@ -652,6 +654,7 @@ function App() {
           </section>
 
           <section className="section" id="tecnologia">
+            <div className="section-bg section-bg-tecnologia" aria-hidden="true" />
             <FadeIn delay={280} duration={900}>
               <SectionHeader
                 eyebrow="Tecnología Base"
@@ -692,6 +695,7 @@ function App() {
           </section>
 
           <section className="section section-final" id="marketplace">
+            <div className="section-bg section-bg-marketplace" aria-hidden="true" />
             <FadeIn delay={300} duration={900}>
               <SectionHeader
                 eyebrow="Marketplace"
