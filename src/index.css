@@ -622,7 +622,9 @@ a {
   display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+  background: linear-gradient(180deg, rgba(4, 10, 14, 0.98) 0%, rgba(8, 16, 22, 0.98) 100%);
 }
 
 .remodel-carousel-caption {
